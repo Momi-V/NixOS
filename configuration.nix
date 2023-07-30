@@ -14,6 +14,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Compile Flags (native, -OX, etc.)
+  #nixpkgs.overlays = [
+  #  (self: super: {
+  #    stdenv = super.withCFlags [ "-march=native" "-mtune=native" "-O3" ] super.stdenv;
+  #  })
+  #];
+
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -40,6 +47,31 @@
   # zRam
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Tell Xorg to use the nvidia driver (also valid for Wayland)
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+    # Modesetting is needed for most Wayland compositors
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module
+    # Only available on driver 515.43.04+
+    open = true;
+
+    # Enable the nvidia settings menu
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -79,13 +111,17 @@
   # Allow Unfree
   nixpkgs.config.allowUnfree = true;
 
+  # New command and Flakes
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    pciutils
+    pciutils vulkan-tools wayland-utils clinfo glxinfo
     wineWowPackages.waylandFull
+    wineWowPackages.full
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

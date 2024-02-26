@@ -41,9 +41,6 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
-  # Virtualisation services
-  # virtualisation.vmware.guest.enable = true;
-
   # zRam
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
@@ -106,6 +103,7 @@
       tree
       winetricks
       lutris
+      steam
     ];
   };
 
@@ -118,8 +116,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
+    vim nano # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget curl
     pciutils vulkan-tools wayland-utils clinfo glxinfo
     wineWowPackages.waylandFull
     wineWowPackages.full

@@ -94,6 +94,16 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Enable mDNS
+  services.avahi = {
+    nssmdns = true;
+    enable = true;
+    publish = {
+      enable = true;
+      addresses = true;
+    };
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

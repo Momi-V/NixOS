@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <nixos-hardware/raspberry-pi/4>
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
@@ -31,9 +32,6 @@
     # useXkbConfig = true; # use xkb.options in tty.
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {
     isNormalUser = true;
@@ -45,6 +43,7 @@
 
   # Allow Unfree Software
   nixpkgs.config.allowUnfree = true;
+  hardware.enableRedistributableFirmware = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).

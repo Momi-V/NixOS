@@ -43,7 +43,7 @@
 
   # Allow Unfree Software
   nixpkgs.config.allowUnfree = true;
-  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).

@@ -19,6 +19,7 @@ in
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.systemd.enable = true;
 
   # Lanzaboote
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -90,8 +91,8 @@ in
   # KDE Plasma Desktop
   services.xserver.enable = true; # optional
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.autoNumlock = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.settings.General.DisplayServer = "wayland";
   services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
 
@@ -118,6 +119,19 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  environment.shellAliases = {
+    nixconf = "sudo nano /etc/nixos/configuration.nix";
+    nixrb = "sudo nixos-rebuild switch";
+  };
+
+  # Enable Steam and related services
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {
     isNormalUser = true;
@@ -125,7 +139,7 @@ in
     packages = with pkgs; [
       bitwarden nextcloud-client
       firefox github-desktop vlc
-      btop fastfetch powertop
+      btop fastfetch powertop btrfs-assistant
       virt-manager docker-compose
     ];
   };
@@ -143,7 +157,7 @@ in
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
-    htop
+    htop usbutils
     sbctl niv
     git
   ];

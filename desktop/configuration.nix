@@ -74,10 +74,16 @@ in
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.autoNumlock = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.wayland.compositor = "kwin";
-  services.displayManager.sddm.settings.General.DisplayServer = "wayland";
   services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
+
+  # Sunshine for remote Desktop
+  # services.sunshine = {
+  #   enable = true;
+  #   autoStart = true;
+  #   capSysAdmin = true;
+  #   openFirewall = true;
+  # };
 
   # Fingerprint Reader
   # services.fprintd.enable = true;

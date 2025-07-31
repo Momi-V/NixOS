@@ -33,26 +33,23 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
 
-  # RTC local time
-  time.hardwareClockInLocalTime = true;
-
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [ "/" ];
-  };
-
+  # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.interfaces.eno1.wakeOnLan.enable = true; # Turn on WoL
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
+  # Thunderbolt
+  services.hardware.bolt.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
+  time.hardwareClockInLocalTime = true; # RTC local time
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -108,9 +105,16 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  # General user environment
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";
+  };
+
+  fileSystems."/home/momi/net" = {
+    device = "//truenas.lan/net/Games";
+    fsType = "cifs";
+    options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=30,x-systemd.device-timeout=5,x-systemd.mount-timeout=5" "uid=1000,gid=100" "file_mode=0757,dir_mode=0757" ];
   };
 
   # Enable Steam and related services
@@ -128,7 +132,8 @@ in
     packages = with pkgs; [
       bitwarden nextcloud-client
       firefox github-desktop vlc
-      btop fastfetch btrfs-assistant
+      btop fastfetch
+      btrfs-assistant screen
       virt-manager docker-compose
     ];
   };
@@ -146,7 +151,7 @@ in
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
-    htop usbutils
+    htop cifs-utils
     sbctl niv
     git
   ];
@@ -161,6 +166,14 @@ in
 
   # List services that you want to enable:
 
+  # Btrfs scrub
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
+
+  # Nix stuff
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";

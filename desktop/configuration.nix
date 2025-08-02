@@ -111,10 +111,17 @@ in
     nixrb = "sudo nixos-rebuild switch";
   };
 
-  fileSystems."/home/momi/net" = {
-    device = "//truenas.lan/net/Games";
-    fsType = "cifs";
-    options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=30,x-systemd.device-timeout=5,x-systemd.mount-timeout=5" "uid=1000,gid=100" "file_mode=0757,dir_mode=0757" ];
+  # Steam Library mount SMB and NFS
+  # fileSystems."/home/momi/Steam_Linux" = {
+  #   device = "//truenas.lan/net/Games/Steam_Linux";
+  #   fsType = "cifs";
+  #   options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" "file_mode=0757,dir_mode=0757" ];
+  # };
+
+  fileSystems."/home/momi/Steam_Linux" = {
+    device = "truenas.lan:/mnt/bigSpin/net/Games/Steam_Linux";
+    fsType = "nfs";
+    options = [ "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" ];
   };
 
   # Enable Steam and related services
@@ -131,7 +138,7 @@ in
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden nextcloud-client
-      firefox github-desktop vlc
+      firefox github-desktop discord vlc
       btop fastfetch
       btrfs-assistant screen
       virt-manager docker-compose
@@ -152,7 +159,7 @@ in
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
     htop cifs-utils
-    sbctl niv
+    sbctl niv nix-search-cli
     git
   ];
 

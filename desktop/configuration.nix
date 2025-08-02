@@ -31,7 +31,7 @@ in
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-8:3048x2032R@60D" ];
 
   # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.
@@ -75,12 +75,12 @@ in
   programs.dconf.enable = true;
 
   # Sunshine for remote Desktop
-  # services.sunshine = {
-  #   enable = true;
-  #   autoStart = true;
-  #   capSysAdmin = true;
-  #   openFirewall = true;
-  # };
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
 
   # Fingerprint Reader
   # services.fprintd.enable = true;

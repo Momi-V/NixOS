@@ -33,9 +33,6 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
 
-  # RTC local time
-  time.hardwareClockInLocalTime = true;
-
   ## POWER
   powerManagement = {
     enable = true;
@@ -55,12 +52,6 @@ in
   #    };
   # };
 
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [ "/" ];
-  };
-
   networking.hostName = "AshFlake"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -70,8 +61,12 @@ in
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
+  # Thunderbolt
+  services.hardware.bolt.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
+  time.hardwareClockInLocalTime = true; # RTC local time
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -119,6 +114,7 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  # General user environment
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";
@@ -138,8 +134,9 @@ in
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden nextcloud-client
-      firefox github-desktop vlc
-      btop fastfetch powertop btrfs-assistant
+      firefox github-desktop discord vlc
+      btop fastfetch
+      btrfs-assistant screen
       virt-manager docker-compose
     ];
   };
@@ -157,8 +154,8 @@ in
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
-    htop usbutils
-    sbctl niv
+    htop cifs-utils
+    sbctl niv nix-search-cli
     git
   ];
 
@@ -172,6 +169,14 @@ in
 
   # List services that you want to enable:
 
+  # Btrfs scrub
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
+
+  # Nix stuff
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";

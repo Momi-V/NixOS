@@ -52,7 +52,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   # Hardware optimized compilation
-  # nix.settings.system-features = [ "gccarch-native" ];
+  nix.settings.system-features = [ "gccarch-lunarlake" ];
   # nixpkgs.localSystem = {
   #   gcc.arch = "native";
   #   gcc.tune = "native";

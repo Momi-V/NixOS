@@ -142,6 +142,7 @@ in
       btop fastfetch
       btrfs-assistant screen
       virt-manager docker-compose
+      lutris winetricks
     ];
   };
 
@@ -159,8 +160,8 @@ in
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
     htop cifs-utils
-    sbctl niv nix-search-cli
-    git
+    git sbctl niv nix-search-cli
+    wineWowPackages.stable #wineWowPackages.waylandFull
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

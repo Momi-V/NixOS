@@ -74,12 +74,12 @@
   };
 
   # Enable cron service
-  # services.cron = {
-  #   enable = true;
-  #   systemCronJobs = [
-  #     "*/1 * * * * root . /etc/profile; ..."
-  #   ];
-  # };
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/1 * * * * root . /etc/profile; bash /var/dyndns/dyndns.bash"
+    ];
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

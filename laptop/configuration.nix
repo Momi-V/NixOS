@@ -144,8 +144,16 @@ in
     ];
   };
 
-  # Allow unfree Software
-  nixpkgs.config.allowUnfree = true;
+  # Allow unfree Software and add unstable channnel
+  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import <nixos-unstable> {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   # Virtualization
   virtualisation.libvirtd.enable = true;
@@ -159,7 +167,7 @@ in
     curl wget
     htop cifs-utils
     sbctl niv nix-search-cli
-    git
+    git #unstable.fosrl-olm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -178,6 +186,23 @@ in
     interval = "monthly";
     fileSystems = [ "/" ];
   };
+
+  # Tailscale
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
+
+  # Olm systemd
+  # systemd.services.olm-vpn = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   after = [ "network.target" ];
+  #   description = "Olm VPN client.";
+  #   serviceConfig = {
+  #     Restart = "always";
+  #     User = "root";
+  #     EnvironmentFile = "/home/momi/Olm.conf";
+  #     ExecStart = "${pkgs.unstable.fosrl-olm}/bin/olm";
+  #   };
+  # };
 
   # Nix stuff
   system.autoUpgrade = {

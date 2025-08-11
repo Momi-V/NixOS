@@ -56,10 +56,16 @@ in
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.extraHosts =
-  ''
-    10.11.1.1 unifi
-  '';
+
+  # Hostname resolution over VPN
+  # networking.networkmanager.appendNameservers = [ "10.11.1.1" ]; # Overwritten by Tailscale
+  environment.etc = {
+    "resolv.conf".text = "nameserver 10.11.1.1\n";
+  };
+  # networking.extraHosts =
+  # ''
+  #   10.11.1.1 unifi
+  # '';
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth

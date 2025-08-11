@@ -95,11 +95,14 @@ in
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    # Uncomment the following line if you want to use JACK applications
+    jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -146,8 +149,16 @@ in
     ];
   };
 
-  # Allow unfree Software
-  nixpkgs.config.allowUnfree = true;
+  # Allow unfree Software and add unstable channnel
+  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import <nixos-unstable> {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   # Virtualization
   virtualisation.libvirtd.enable = true;

@@ -56,6 +56,10 @@ in
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.extraHosts =
+  ''
+    10.11.1.1 unifi
+  '';
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -136,7 +140,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      bitwarden nextcloud-client
+      bitwarden nextcloud-client moonlight-qt
       firefox github-desktop discord vlc
       btop fastfetch
       btrfs-assistant screen

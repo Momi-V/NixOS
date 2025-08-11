@@ -59,9 +59,9 @@ in
 
   # Hostname resolution over VPN
   # networking.networkmanager.appendNameservers = [ "10.11.1.1" ]; # Overwritten by Tailscale
-  environment.etc = {
-    "resolv.conf".text = "nameserver 10.11.1.1\n";
-  };
+  # environment.etc = {
+  #   "resolv.conf".text = "nameserver 10.11.1.1\n";
+  # };
   # networking.extraHosts =
   # ''
   #   10.11.1.1 unifi
@@ -198,8 +198,8 @@ in
   };
 
   # Tailscale
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "client";
+  # services.tailscale.enable = true;
+  # services.tailscale.useRoutingFeatures = "client";
 
   # Olm systemd
   # systemd.services.olm-vpn = {

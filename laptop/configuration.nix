@@ -101,23 +101,6 @@ in
   services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
 
-  # dconf settings
-  environment.sessionVariables = {
-   XDG_DATA_DIRS = [ "{pkgs.maliit-keyboard}/share/" "{pkgs.gedit}/share/" ];
-  };
-
-  programs.dconf.profiles.user = {
-    databases = [{
-      lockAll = true;
-      settings = {
-        "org/maliit/keyboard/maliit" = {
-          enabled-languages = "['de']";
-          theme = "BreezeDark";
-        };
-      };
-    }];
-  };
-
   # Fingerprint Reader
   services.fprintd.enable = true;
 
@@ -192,8 +175,8 @@ in
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    curl wget glib gedit dconf-editor
-    htop cifs-utils maliit-keyboard
+    curl wget
+    htop cifs-utils
     sbctl niv nix-search-cli
     git unstable.fosrl-olm
   ];
@@ -216,8 +199,8 @@ in
   };
 
   # Tailscale
-  # services.tailscale.enable = true;
-  # services.tailscale.useRoutingFeatures = "client";
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
 
   # Olm systemd
   # systemd.services.olm-vpn = {

@@ -102,9 +102,13 @@ in
   programs.dconf.enable = true;
 
   # dconf settings
+  environment.sessionVariables = {
+   XDG_DATA_DIRS = [ "{pkgs.maliit-keyboard}/share/" "{pkgs.gedit}/share/" ];
+  };
+
   programs.dconf.profiles.user = {
     databases = [{
-      # lockAll = true;
+      lockAll = true;
       settings = {
         "org/maliit/keyboard/maliit" = {
           enabled-languages = "['de']";
@@ -188,7 +192,7 @@ in
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    curl wget
+    curl wget glib gedit dconf-editor
     htop cifs-utils maliit-keyboard
     sbctl niv nix-search-cli
     git unstable.fosrl-olm

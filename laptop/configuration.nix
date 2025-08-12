@@ -148,6 +148,7 @@ in
     packages = with pkgs; [
       bitwarden nextcloud-client moonlight-qt
       firefox github-desktop discord vlc
+      libreoffice
       btop fastfetch
       btrfs-assistant screen
       virt-manager docker-compose
@@ -177,7 +178,7 @@ in
     curl wget
     htop cifs-utils
     sbctl niv nix-search-cli
-    git #unstable.fosrl-olm
+    git unstable.fosrl-olm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

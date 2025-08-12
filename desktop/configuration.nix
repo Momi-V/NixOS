@@ -142,6 +142,7 @@ in
     packages = with pkgs; [
       bitwarden nextcloud-client
       firefox github-desktop discord vlc
+      libreoffice
       btop fastfetch
       btrfs-assistant screen
       virt-manager docker-compose
@@ -172,7 +173,7 @@ in
     curl wget
     htop cifs-utils
     git sbctl niv nix-search-cli
-    wineWowPackages.stable #wineWowPackages.waylandFull
+    wineWowPackages.stable wineWowPackages.waylandFull
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

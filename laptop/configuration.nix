@@ -101,6 +101,19 @@ in
   services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
 
+  # dconf settings
+  programs.dconf.profiles.user = {
+    databases = [{
+      # lockAll = true;
+      settings = {
+        "org/maliit/keyboard/maliit" = {
+          enabled-languages = "['de']";
+          theme = "BreezeDark";
+        };
+      };
+    }];
+  };
+
   # Fingerprint Reader
   services.fprintd.enable = true;
 
@@ -176,7 +189,7 @@ in
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
-    htop cifs-utils
+    htop cifs-utils maliit-keyboard
     sbctl niv nix-search-cli
     git unstable.fosrl-olm
   ];

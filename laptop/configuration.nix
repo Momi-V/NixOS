@@ -207,6 +207,7 @@ in
   #   wantedBy = [ "multi-user.target" ];
   #   after = [ "network.target" ];
   #   description = "Olm VPN client.";
+  #   path = [ pkgs.iproute2 ];
   #   serviceConfig = {
   #     Restart = "always";
   #     User = "root";

@@ -167,8 +167,8 @@ in
   };
 
   # Virtualization
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  # virtualisation.libvirtd.enable = true;
+  # virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
 
   # List packages installed in system profile.

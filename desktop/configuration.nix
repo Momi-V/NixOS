@@ -146,7 +146,7 @@ in
       btop fastfetch
       btrfs-assistant screen
       virt-manager docker-compose
-      lutris winetricks
+      lutris winetricks mangohud
     ];
   };
 

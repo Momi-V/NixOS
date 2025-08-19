@@ -115,11 +115,11 @@ in
   };
 
   # Steam Library mount SMB and NFS
-  # fileSystems."/home/momi/Steam_Linux" = {
-  #   device = "//truenas.lan/net/Games/Steam_Linux";
-  #   fsType = "cifs";
-  #   options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" "file_mode=0757,dir_mode=0757" ];
-  # };
+  fileSystems."/home/momi/net" = {
+    device = "//truenas.lan/net/";
+    fsType = "cifs";
+    options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" "file_mode=0755,dir_mode=0755" ];
+  };
 
   fileSystems."/home/momi/Steam_Linux" = {
     device = "truenas.lan:/mnt/bigSpin/net/Games/Steam_Linux";

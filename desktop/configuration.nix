@@ -31,7 +31,7 @@ in
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-8:3048x2032R@60D" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-8:3840x2160R@60D" ];
 
   # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.

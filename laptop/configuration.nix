@@ -148,7 +148,7 @@ in
     packages = with pkgs; [
       bitwarden nextcloud-client moonlight-qt
       firefox github-desktop discord vlc
-      libreoffice
+      libreoffice thunderbird
       btop fastfetch
       btrfs-assistant screen
       virt-manager docker-compose
@@ -201,6 +201,9 @@ in
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
+
+  # Proton Mail
+  services.protonmail-bridge.enable = true;
 
   # Olm systemd
   # systemd.services.olm-vpn = {

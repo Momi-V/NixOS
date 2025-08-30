@@ -177,8 +177,8 @@ in
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
     htop cifs-utils
-    sbctl niv nix-search-cli
-    git unstable.fosrl-olm
+    git sbctl niv nix-search-cli
+    #unstable.fosrl-olm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -199,11 +199,11 @@ in
   };
 
   # Tailscale
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "client";
+  # services.tailscale.enable = true;
+  # services.tailscale.useRoutingFeatures = "client";
 
   # Proton Mail
-  services.protonmail-bridge.enable = true;
+  # services.protonmail-bridge.enable = true;
 
   # Olm systemd
   # systemd.services.olm-vpn = {

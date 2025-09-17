@@ -178,6 +178,7 @@ in
     htop cifs-utils
     git sbctl niv nix-search-cli
     wineWowPackages.stable wineWowPackages.waylandFull
+    aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

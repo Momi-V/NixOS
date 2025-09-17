@@ -178,6 +178,7 @@ in
     curl wget
     htop cifs-utils
     git sbctl niv nix-search-cli
+    aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science
     #unstable.fosrl-olm
   ];
 

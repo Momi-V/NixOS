@@ -93,6 +93,13 @@ in
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  # Enable HW Acceleration
+  environment.variables.AMD_VULKAN_ICD = "RADV";
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # KDE Plasma Desktop
   services.xserver.enable = true; # optional
   services.displayManager.sddm.enable = true;

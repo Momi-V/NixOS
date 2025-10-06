@@ -155,7 +155,7 @@ in
       bitwarden nextcloud-client
       firefox github-desktop discord vlc
       libreoffice
-      btop fastfetch
+      btop fastfetch amdgpu_top
       btrfs-assistant screen
       virt-manager docker-compose
       lutris winetricks mangohud

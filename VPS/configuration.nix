@@ -81,7 +81,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/1 * * * * root . /etc/profile; bash /var/dyndns/dyndns.bash"
+      "*/1 * * * * root . /etc/profile; /var/dyndns/dyndns.bash"
     ];
   };
 

@@ -94,7 +94,6 @@ in
   # services.xserver.enable = true;
 
   # Enable HW Acceleration
-  environment.variables.AMD_VULKAN_ICD = "RADV";
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -207,11 +206,11 @@ in
   };
 
   # Tailscale
-  # services.tailscale.enable = true;
-  # services.tailscale.useRoutingFeatures = "client";
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
 
   # Proton Mail
-  # services.protonmail-bridge.enable = true;
+  services.protonmail-bridge.enable = true;
 
   # Olm systemd
   # systemd.services.olm-vpn = {

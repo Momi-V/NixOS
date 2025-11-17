@@ -31,7 +31,7 @@ in
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-8:3840x2160R@60D" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-3:3840x2160R@60D" ];
   systemd.extraConfig = "DefaultLimitNOFILE=65536:1048576";
   systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
 
@@ -40,7 +40,7 @@ in
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.interfaces.eno1.wakeOnLan.enable = true; # Turn on WoL
+  networking.interfaces.enp7s0.wakeOnLan.enable = true; # Turn on WoL
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth

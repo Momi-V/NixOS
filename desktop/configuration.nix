@@ -31,9 +31,16 @@ in
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-3:3840x2160R@60D" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-3:e" "drm.edid_firmware=DP-3:edid/edid.bin" ];
   systemd.extraConfig = "DefaultLimitNOFILE=65536:1048576";
   systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+
+  hardware.firmware = [(
+    pkgs.runCommand "edid.bin" { } ''
+      mkdir -p $out/lib/firmware/edid
+      cp ${/home/momi/edid.bin} $out/lib/firmware/edid/edid.bin
+    ''
+  )];
 
   # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.

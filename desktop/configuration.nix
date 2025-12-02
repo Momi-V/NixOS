@@ -74,7 +74,6 @@ in
   # services.xserver.enable = true;
 
   # Enable HW Acceleration
-  environment.variables.AMD_VULKAN_ICD = "RADV";
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

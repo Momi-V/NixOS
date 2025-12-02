@@ -6,7 +6,7 @@
 
 let
     sources = import /root/nix/sources.nix;
-    lanzaboote = import sources.lanzaboote;
+    lanzaboote = import sources.lanzaboote { inherit pkgs; };
 in
 
 {

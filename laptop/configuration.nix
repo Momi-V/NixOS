@@ -109,7 +109,7 @@ in
   programs.dconf.enable = true;
 
   # Fingerprint Reader
-  services.fprintd.enable = true;
+  # services.fprintd.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
@@ -153,7 +153,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      bitwarden nextcloud-client moonlight-qt
+      bitwarden-desktop nextcloud-client moonlight-qt
       firefox github-desktop discord vlc
       libreoffice thunderbird
       btop fastfetch

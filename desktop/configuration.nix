@@ -159,7 +159,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      bitwarden nextcloud-client
+      bitwarden-desktop nextcloud-client
       firefox github-desktop discord vlc
       libreoffice
       btop fastfetch amdgpu_top

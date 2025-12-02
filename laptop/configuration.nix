@@ -36,10 +36,10 @@ in
   ## POWER
   powerManagement = {
     enable = true;
-    # cpuFreqGovernor = "schedutil";
+    cpuFreqGovernor = "schedutil";
   };
 
-  # services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = true;
   # services.auto-cpufreq.enable = true;
   # services.auto-cpufreq.settings = {
   #   battery = {

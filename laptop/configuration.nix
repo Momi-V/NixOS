@@ -188,6 +188,7 @@ in
     curl wget
     htop cifs-utils
     git sbctl niv nix-search-cli
+    kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
     wineWowPackages.stable wineWowPackages.waylandFull
     aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science
     #unstable.fosrl-olm

@@ -52,7 +52,7 @@ in
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Thunderbolt
-  services.hardware.bolt.enable = true;
+  # services.hardware.bolt.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -158,7 +158,7 @@ in
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client
       firefox github-desktop discord vlc
-      libreoffice
+      libreoffice thunderbird
       btop fastfetch amdgpu_top
       btrfs-assistant screen
       virt-manager docker-compose

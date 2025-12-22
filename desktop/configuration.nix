@@ -31,7 +31,7 @@ in
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-3:e" "drm.edid_firmware=DP-3:edid/edid.bin" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-2:e" "drm.edid_firmware=DP-2:edid/edid.bin" ];
 
   hardware.firmware = [(
     pkgs.runCommand "edid.bin" { } ''

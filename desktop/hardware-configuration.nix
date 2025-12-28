@@ -52,10 +52,10 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   # Hardware optimized compilation
-  nix.settings.system-features = [ "gccarch-znver5" "gccarch-x86-64-v4" ];
+  nix.settings.system-features = [ "gccarch-znver3" "gccarch-x86-64-v3" ];
   # nixpkgs.localSystem = {
-  #   gcc.arch = "x86-64-v4";
-  #   gcc.tune = "znver5";
+  #   gcc.arch = "x86-64-v3";
+  #   gcc.tune = "znver3";
   #   system = "x86_64-linux";
   # };
 

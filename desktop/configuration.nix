@@ -195,6 +195,81 @@ in
     git sbctl niv nix-search-cli
     wineWowPackages.stable wineWowPackages.waylandFull
     aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science
+
+    # Phoronix
+    phoronix-test-suite
+
+    # Core toolchain (most CPU tests build from source)
+    stdenv.cc
+    gcc
+    clang
+    llvm
+    cmake
+    meson
+    autoconf
+    automake
+    libtool
+    bison
+    flex
+    nasm
+    yasm
+    scons
+
+    # Math / scientific (heavily used by CPU tests)
+    blas
+    lapack
+    openblas
+    fftw
+    eigen
+    suitesparse
+    superlu
+    gmp
+    hdf5
+
+    # Compression / crypto / encoding
+    zlib
+    bzip2
+    p7zip
+    xz
+    snappy
+    openssl
+    libxml2
+    expat
+
+    # Languages used by benchmarks
+    python3
+    python3Packages.numpy
+    python3Packages.scipy
+    perl
+    ruby
+    openjdk
+    maven
+    go
+    bc
+    rustc
+    cargo
+
+    # Databases / server CPU tests
+    redis
+    mongodb
+
+    # Networking / misc
+    curl
+    libevent
+    protobuf
+    popt
+
+    # System / low-level
+    glibc
+    ncurses
+    numactl
+    libaio
+    util-linux
+    attr
+
+    # Version control (some tests fetch sources)
+    git
+    subversion
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

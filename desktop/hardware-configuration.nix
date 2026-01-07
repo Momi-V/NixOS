@@ -50,14 +50,14 @@
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp195s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   # Hardware optimized compilation
   nix.settings.system-features = [ "gccarch-znver3" "gccarch-x86-64-v3" "gccarch-x86-64-v2" "gccarch-x86-64" ];
-  # nixpkgs.localSystem = {
-  #   gcc.arch = "x86-64-v3";
-  #   gcc.tune = "znver3";
-  #   system = "x86_64-linux";
-  # };
+  nixpkgs.localSystem = {
+    gcc.arch = "x86-64-v3";
+    gcc.tune = "generic";
+    system = "x86_64-linux";
+  };
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.enableAllFirmware = true;

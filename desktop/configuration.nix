@@ -13,6 +13,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/ksm.nix
       lanzaboote.nixosModules.lanzaboote
     ];
 
@@ -36,6 +37,12 @@ in
   # Set higher uLimit
   systemd.settings.Manager.DefaultLimitNOFILE = "65536:1048576";
   systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+
+  # KSM everything
+  pongo.ksm = {
+    enable = true;            # enable the module
+    forceAllProcesses = true; # optional, as provided by the module
+  };
 
   hardware.firmware = [(
     pkgs.runCommand "edid.bin" { } ''

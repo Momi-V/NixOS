@@ -47,7 +47,7 @@ in
   hardware.firmware = [(
     pkgs.runCommand "edid.bin" { } ''
       mkdir -p $out/lib/firmware/edid
-      cp ${/home/momi/edid.bin} $out/lib/firmware/edid/edid.bin
+      cp ${/etc/nixos/modules/edid.bin} $out/lib/firmware/edid/edid.bin
     ''
   )];
 

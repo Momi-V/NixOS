@@ -160,7 +160,7 @@ in
       firefox github-desktop discord vlc
       libreoffice thunderbird
       btop fastfetch amdgpu_top
-      btrfs-assistant screen
+      btrfs-assistant kdePackages.filelight screen
       virt-manager docker-compose
     ];
   };

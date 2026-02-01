@@ -139,17 +139,17 @@ in
     nixrb = "sudo nixos-rebuild switch";
   };
 
-  # Steam Library mount SMB and NFS
+  # NAS Share mount
   fileSystems."/home/momi/net" = {
     device = "//truenas.lan/net/";
     fsType = "cifs";
-    options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" "file_mode=0755,dir_mode=0755" ];
+    options = [ "credentials=/home/momi/netsmb.login" "cache=loose" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
   };
 
   fileSystems."/home/momi/Steam_Linux" = {
-    device = "truenas.lan:/mnt/bigSpin/net/Games/Steam_Linux";
-    fsType = "nfs";
-    options = [ "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" ];
+    device = "//truenas.lan/net/Games/Steam_Linux";
+    fsType = "cifs";
+    options = [ "credentials=/home/momi/netsmb.login" "cache=loose,mfsymlinks" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
   };
 
   # Enable Steam and related services

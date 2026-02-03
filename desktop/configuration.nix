@@ -171,6 +171,7 @@ in
       bitwarden-desktop nextcloud-client
       firefox github-desktop discord vlc
       libreoffice thunderbird
+      blender-hip davinci-resolve-studio
       btop fastfetch amdgpu_top
       btrfs-assistant kdePackages.filelight screen
       virt-manager docker-compose

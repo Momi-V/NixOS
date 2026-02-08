@@ -17,12 +17,12 @@
 
   # Use latest Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
+  boot.supportedFilesystems = [ "bcachefs" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
 
   # Networking
   networking.hostName = "NovaFlake"; # Define your hostname.
   # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # networking.networkmanager.settings.connection.autoconnect = true; # Make sure autoconnect is active.
 
@@ -59,6 +59,19 @@
     packageOverrides = pkgs: {
       unstable = import <nixos-unstable> {
         config = config.nixpkgs.config;
+      };
+    };
+  };
+
+  services.cockpit = {
+    enable = true;
+    # allowed-origins = [
+    #   "https://cockpit.<domain>.com"  # The public-facing URL clients will connect from in the browser
+    # ];
+    settings = {
+      WebService = {
+        AllowUnencrypted = true;
+        ProtocolHeader = "X-Forwarded-Proto";  # Specifies the request goes through a reverse proxy
       };
     };
   };

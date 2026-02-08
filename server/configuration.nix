@@ -80,7 +80,6 @@
   # System services.
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
-  virtualisation.docker.enable = true;
 
   # FHS compatibility
   services.envfs.enable = true;

@@ -23,7 +23,7 @@
   # Networking
   networking.hostName = "NovaFlake"; # Define your hostname.
   # Pick only one of the below networking options.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # networking.networkmanager.settings.connection.autoconnect = true; # Make sure autoconnect is active.
 
   # Set your time zone.
@@ -65,15 +65,16 @@
 
   services.cockpit = {
     enable = true;
-    # allowed-origins = [
-    #   "https://cockpit.<domain>.com"  # The public-facing URL clients will connect from in the browser
-    # ];
-    settings = {
-      WebService = {
-        AllowUnencrypted = true;
-        ProtocolHeader = "X-Forwarded-Proto";  # Specifies the request goes through a reverse proxy
-      };
-    };
+    openFirewall = true;
+    allowed-origins = [
+      "https://novaflake.lan:9090"  # The URL clients will connect from in the browser (for CORS config)
+    ];
+    # settings = {
+    #   WebService = {
+    #     AllowUnencrypted = true;
+    #     ProtocolHeader = "X-Forwarded-Proto";  # Specifies the request goes through a reverse proxy
+    #   };
+    # };
   };
 
   # Virtualization

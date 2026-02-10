@@ -81,6 +81,9 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.docker.daemon.settings = {
+    data-root = "/mnt/nasdata/system/docker"
+  }
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

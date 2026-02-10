@@ -48,7 +48,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      btop fastfetch screen
+      btop fastfetch screen gh
     ];
   };
 
@@ -82,8 +82,8 @@
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.docker.daemon.settings = {
-    data-root = "/mnt/nasdata/system/docker"
-  }
+    data-root = "/mnt/nasdata/system/docker";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

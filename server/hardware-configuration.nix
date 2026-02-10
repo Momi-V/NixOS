@@ -14,23 +14,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "UUID=52a49279-dcfc-4bb9-b11f-28c6115a6558";
+    { device = "UUID=dddae705-a616-42c5-a076-a5b4ddc315cc";
       fsType = "bcachefs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/CF1C-1929";
+    { device = "/dev/disk/by-uuid/9F48-0E12";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/mnt/nasdata" =
-    { device = "UUID=3a4f9c54-266a-458e-acd2-8fc445ce0e64";
+    { device = "UUID=2653d0ea-1b79-4553-9354-8c1a6ddce06b";
       fsType = "bcachefs";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/66ccc2cf-58d5-4c05-af6e-8a56f8203f25"; }
+    [ { device = "/dev/disk/by-uuid/a4ec6275-8903-4a9b-9f50-f6971739c9f6"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

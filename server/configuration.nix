@@ -18,7 +18,13 @@
   # Use latest Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "bcachefs" ];
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "nomodeset" ];
+  boot.kernelParams = [ "nomodeset" ];
+
+  # Use zRam
+  zramSwap.enable = true;
+  zramSwap.algorithm = zstd;
+  zramSwap.memoryPercent = 66;
+
 
   # Networking
   networking.hostName = "NovaFlake"; # Define your hostname.

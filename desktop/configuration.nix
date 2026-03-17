@@ -149,13 +149,6 @@ in
     options = [ "credentials=/home/momi/netsmb.login" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
   };
 
-  fileSystems."/home/momi/Steam_Linux" = {
-    device = "//truenas.lan/net/Games/Steam_Linux";
-    fsType = "cifs";
-    options = [ "credentials=/home/momi/netsmb.login" "cache=loose,mfsymlinks,nostrictsync,max_cached_dirs=65536"
-    "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
-  };
-
   # Enable Steam and related services
   programs.steam = {
     enable = true;

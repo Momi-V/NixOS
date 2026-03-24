@@ -198,14 +198,15 @@ in
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
-    htop cifs-utils lshw
-    distrobox podman
+    htop cifs-utils
+    distrobox lshw
     git sbctl niv nix-search-cli
     wineWowPackages.stable wineWowPackages.waylandFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large

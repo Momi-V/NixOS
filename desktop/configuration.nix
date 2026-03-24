@@ -208,7 +208,7 @@ in
     distrobox podman
     git sbctl niv nix-search-cli
     wineWowPackages.stable wineWowPackages.waylandFull
-    aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science
+    hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

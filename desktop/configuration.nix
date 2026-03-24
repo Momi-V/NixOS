@@ -166,8 +166,7 @@ in
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client
       chromium firefox github-desktop discord vlc
-      libreoffice thunderbird
-      blender-hip davinci-resolve-studio
+      blender-hip libreoffice thunderbird
       btop fastfetch amdgpu_top
       btrfs-assistant kdePackages.filelight screen
       virt-manager docker-compose
@@ -205,7 +204,8 @@ in
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl wget
-    htop cifs-utils
+    htop cifs-utils lshw
+    distrobox podman
     git sbctl niv nix-search-cli
     wineWowPackages.stable wineWowPackages.waylandFull
     aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science

@@ -150,13 +150,37 @@ in
   };
 
   # Enable Steam and related services
-  programs.steam = {
+  # programs.steam = {
+  #   enable = true;
+  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  #   gamescopeSession.enable = true; # Use the gamescope compositor, enables resolution upscaling and stretched aspect ratios
+  #   extraCompatPackages = [ pkgs.proton-ge-bin ]; # Install Proton-GE
+  # };
+
+  # Enable Steam and related services & Allow VR
+  programs.steam = let
+    patchedBwrap = pkgs.bubblewrap.overrideAttrs (o: {
+      patches = (o.patches or []) ++ [
+        ./modules/bwrap.patch
+      ];
+    });
+  in {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     gamescopeSession.enable = true; # Use the gamescope compositor, enables resolution upscaling and stretched aspect ratios
     extraCompatPackages = [ pkgs.proton-ge-bin ]; # Install Proton-GE
+
+    package = pkgs.steam.override {
+      buildFHSEnv = (args: ((pkgs.buildFHSEnv.override {
+        bubblewrap = patchedBwrap;
+      }) (args // {
+        extraBwrapArgs = (args.extraBwrapArgs or []) ++ [ "--cap-add CAP_SYS_NICE" ];
+      })));
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

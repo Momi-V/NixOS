@@ -166,7 +166,7 @@ in
       chromium firefox github-desktop discord vlc
       blender-hip unstable.davinci-resolve-studio libreoffice thunderbird
       btop fastfetch amdgpu_top
-      btrfs-assistant kdePackages.filelight screen
+      btrfs-assistant kdePackages.filelight kdePackages.kfind screen
       virt-manager docker-compose
       lutris winetricks mangohud
     ];

@@ -88,10 +88,8 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
   };
+  hardware.amdgpu.opencl.enable = true;
 
   # KDE Plasma Desktop
   services.xserver.enable = true; # optional
@@ -166,7 +164,7 @@ in
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client
       chromium firefox github-desktop discord vlc
-      blender-hip libreoffice thunderbird
+      blender-hip unstable.davinci-resolve-studio libreoffice thunderbird
       btop fastfetch amdgpu_top
       btrfs-assistant kdePackages.filelight screen
       virt-manager docker-compose

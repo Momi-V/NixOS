@@ -99,6 +99,7 @@ in
     enable = true;
     enable32Bit = true;
   };
+  hardware.amdgpu.opencl.enable = true;
 
   # KDE Plasma Desktop
   services.xserver.enable = true; # optional
@@ -157,10 +158,10 @@ in
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client moonlight-qt
-      firefox github-desktop discord vlc
-      libreoffice thunderbird
-      btop fastfetch amdgpu_top
-      btrfs-assistant kdePackages.filelight screen
+      chromium firefox discord vlc
+      github-desktop libreoffice thunderbird
+      amdgpu_top btop fastfetch screen
+      btrfs-assistant kdePackages.filelight
       virt-manager docker-compose
     ];
   };
@@ -190,8 +191,8 @@ in
     git sbctl niv nix-search-cli
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
     wineWowPackages.stable wineWowPackages.waylandFull
-    aspell aspellDicts.de aspellDicts.en aspellDicts.en-computers aspellDicts.en-science
-    #unstable.fosrl-olm
+    hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
+    #fosrl-olm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

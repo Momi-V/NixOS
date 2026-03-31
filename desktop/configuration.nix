@@ -163,10 +163,11 @@ in
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client
-      chromium firefox github-desktop discord vlc
-      blender-hip unstable.davinci-resolve-studio libreoffice thunderbird
-      btop fastfetch amdgpu_top
-      btrfs-assistant kdePackages.filelight kdePackages.kfind screen
+      chromium firefox discord vlc
+      github-desktop libreoffice thunderbird
+      blender-hip davinci-resolve-studio
+      amdgpu_top btop fastfetch screen
+      btrfs-assistant kdePackages.filelight kdePackages.kfind
       virt-manager docker-compose
       lutris winetricks mangohud
     ];

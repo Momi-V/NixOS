@@ -153,13 +153,6 @@ in
     nixrb = "sudo nixos-rebuild switch";
   };
 
-  # NAS Share mount
-  fileSystems."/home/momi/net" = {
-    device = "//truenas.lan/net/";
-    fsType = "cifs";
-    options = [ "credentials=/home/momi/netsmb.login" "mfsymlinks" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
-  };
-
   # Enable Steam and related services
   programs.steam = {
     enable = true;

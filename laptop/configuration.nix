@@ -13,6 +13,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/ksm.nix
       lanzaboote.nixosModules.lanzaboote
     ];
 
@@ -31,15 +32,25 @@ in
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "ntsync" ];
   boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
 
-  ## POWER
-  powerManagement = {
-    enable = true;
-    # cpuFreqGovernor = "schedutil";
+  # Set higher uLimit
+  systemd.settings.Manager.DefaultLimitNOFILE = "65536:1048576";
+  systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+
+  # KSM everything
+  pongo.ksm = {
+    enable = true;            # enable the module
+    forceAllProcesses = true; # optional, as provided by the module
   };
 
+  ## POWER
   services.power-profiles-daemon.enable = true;
+  powerManagement = {
+    enable = true;
+  };
+
   # services.auto-cpufreq.enable = true;
   # services.auto-cpufreq.settings = {
   #   battery = {
@@ -142,6 +153,13 @@ in
     nixrb = "sudo nixos-rebuild switch";
   };
 
+  # NAS Share mount
+  fileSystems."/home/momi/net" = {
+    device = "//truenas.lan/net/";
+    fsType = "cifs";
+    options = [ "credentials=/home/momi/netsmb.login" "mfsymlinks" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
+  };
+
   # Enable Steam and related services
   programs.steam = {
     enable = true;
@@ -161,7 +179,7 @@ in
       chromium firefox discord vlc
       github-desktop libreoffice thunderbird
       amdgpu_top btop fastfetch screen
-      btrfs-assistant kdePackages.filelight
+      btrfs-assistant kdePackages.filelight kdePackages.kfind
       virt-manager docker-compose
     ];
   };

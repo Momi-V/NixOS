@@ -148,6 +148,9 @@ in
   # services.libinput.enable = true;
 
   # General user environment
+  environment.variables = {
+    NIXPKGS_ALLOW_UNFREE = 1;
+  };
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";

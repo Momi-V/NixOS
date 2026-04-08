@@ -54,7 +54,7 @@
   # Hardware optimized compilation
   nix.settings.system-features = [ "gccarch-znver3" "gccarch-x86-64-v3" "gccarch-x86-64-v2" "gccarch-x86-64" ];
   nixpkgs.localSystem = {
-    gcc.arch = "x86-64-v3";
+    gcc.arch = "x86-64-v2";
     gcc.tune = "generic";
     system = "x86_64-linux";
   };

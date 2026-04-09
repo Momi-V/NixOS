@@ -171,7 +171,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      bitwarden-desktop nextcloud-client moonlight-qt
+      bitwarden-desktop nextcloud-client protonmail-bridge-gui moonlight-qt
       chromium firefox discord vlc
       github-desktop libreoffice thunderbird
       amdgpu_top btop fastfetch screen
@@ -229,9 +229,6 @@ in
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
-
-  # Proton Mail
-  services.protonmail-bridge.enable = true;
 
   # Olm systemd
   # systemd.services.olm-vpn = {

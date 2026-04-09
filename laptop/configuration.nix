@@ -69,16 +69,6 @@ in
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  # Hostname resolution over VPN
-  # networking.networkmanager.appendNameservers = [ "10.11.1.1" ]; # Overwritten by Tailscale
-  # environment.etc = {
-  #   "resolv.conf".text = "nameserver 10.11.1.1\n";
-  # };
-  # networking.extraHosts =
-  # ''
-  #   10.11.1.1 unifi
-  # '';
-
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -206,7 +196,6 @@ in
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
     wineWowPackages.stable wineWowPackages.waylandFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
-    #fosrl-olm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -229,20 +218,6 @@ in
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
-
-  # Olm systemd
-  # systemd.services.olm-vpn = {
-  #   wantedBy = [ "multi-user.target" ];
-  #   after = [ "network.target" ];
-  #   description = "Olm VPN client.";
-  #   path = [ pkgs.iproute2 ];
-  #   serviceConfig = {
-  #     Restart = "always";
-  #     User = "root";
-  #     EnvironmentFile = "/home/momi/Olm.conf";
-  #     ExecStart = "${pkgs.unstable.fosrl-olm}/bin/olm";
-  #   };
-  # };
 
   # FHS compatibility
   services.envfs.enable = true;

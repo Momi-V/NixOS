@@ -165,7 +165,7 @@ in
       chromium firefox discord vlc
       github-desktop libreoffice thunderbird
       amdgpu_top btop fastfetch screen
-      btrfs-assistant kdePackages.filelight kdePackages.kfind
+      btrfs-assistant kdePackages.filelight
       virt-manager docker-compose
     ];
   };
@@ -194,7 +194,7 @@ in
     htop cifs-utils
     git sbctl niv nix-search-cli
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
-    wineWowPackages.stable wineWowPackages.waylandFull
+    wineWow64Packages.stableFull wineWow64Packages.waylandFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 

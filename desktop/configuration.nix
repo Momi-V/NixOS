@@ -93,11 +93,8 @@ in
   hardware.amdgpu.opencl.enable = true;
 
   # KDE Plasma Desktop
-  services.xserver.enable = true; # optional
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.autoNumlock = true;
-  services.displayManager.sddm.wayland.enable = true;
-  # services.displayManager.sddm.wayland.compositor = "kwin";
+  # services.xserver.enable = true; # optional
+  services.displayManager.plasma-login-manager.enable = true;
   services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
 

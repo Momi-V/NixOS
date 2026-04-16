@@ -234,6 +234,16 @@
   # Allow unfree Software and add unstable channnel
   nixpkgs.config.allowUnfree = true;
 
+  # x64_v3 Fixes
+  nixpkgs.overlays = [
+    (final: prev: {
+      assimp = prev.assimp.overrideAttrs (old: {
+        NIX_CFLAGS_COMPILE =
+          (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
+      });
+    })
+  ];
+
   # Virtualization
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu.swtpm.enable = true;

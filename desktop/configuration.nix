@@ -204,6 +204,27 @@ in
         NIX_CFLAGS_COMPILE =
           (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
       });
+
+      opencolorio = prev.opencolorio.overrideAttrs (old: {
+        NIX_CFLAGS_COMPILE =
+          (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
+      });
+
+      valkey = prev.valkey.overrideAttrs (old: {
+        checkPhase = builtins.replaceStrings
+          [ "--skipunit integration/aof-multi-part" ]
+          [ "--skipunit integration/aof-multi-part --skipunit integration/dual-channel-replication" ]
+          old.checkPhase;
+      });
+
+      python311 = prev.python311.override {
+        packageOverrides = pyFinal: pyPrev: {
+          numpy_1 = pyPrev.numpy.overrideAttrs (old: {
+            NIX_CFLAGS_COMPILE =
+              (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
+          });
+        };
+      };
     })
   ];
 

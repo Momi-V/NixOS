@@ -170,6 +170,15 @@ in
     ];
   };
 
+  # Nix internal Options
+  nix.settings = {
+    # Nix Experimental
+    experimental-features = "nix-command flakes";
+    # Nix Limit parallel build
+    max-jobs = 16;
+    cores = 16;
+  };
+
   # Allow unfree Software and add unstable channnel
   # nixpkgs.config.allowUnfree = true;
   nixpkgs.config = {

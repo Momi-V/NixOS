@@ -172,6 +172,7 @@ in
       pkgsRocm.blender davinci-resolve-studio
       amdgpu_top btop fastfetch screen
       btrfs-assistant kdePackages.filelight
+      kdePackages.kcalc kdePackages.kompare kdePackages.marknote
       virt-manager docker-compose
       lutris winetricks mangohud
     ];

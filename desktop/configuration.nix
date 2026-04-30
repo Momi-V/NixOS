@@ -304,12 +304,12 @@
     persistent = true;
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    persistent = true;
-    options = "--delete-older-than 30d";
-  };
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   persistent = true;
+  #   options = "--delete-older-than 30d";
+  # };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

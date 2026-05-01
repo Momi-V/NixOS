@@ -148,7 +148,11 @@ in
   fileSystems."/home/momi/net" = {
     device = "//truenas.lan/net/";
     fsType = "cifs";
-    options = [ "credentials=/home/momi/netsmb.login" "mfsymlinks" "x-systemd.automount,noauto,x-systemd.idle-timeout=600,x-systemd.mount-timeout=15" "uid=1000,gid=100" ];
+    options = [
+      "credentials=/home/momi/netsmb.login"
+      "mfsymlinks,echo_interval=15" "uid=1000,gid=100"
+      "x-systemd.automount,noauto,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
+    ];
   };
 
   # Enable Steam and related services

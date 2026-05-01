@@ -212,10 +212,39 @@ in
       });
 
       valkey = prev.valkey.overrideAttrs (old: {
-        checkPhase = builtins.replaceStrings
-          [ "--skipunit integration/aof-multi-part" ]
-          [ "--skipunit integration/aof-multi-part --skipunit integration/dual-channel-replication" ]
-          old.checkPhase;
+        checkPhase = ''
+          runHook preCheck
+
+          # disable test "Connect multiple replicas at the same time": even
+          # upstream find this test too timing-sensitive
+          substituteInPlace tests/integration/replication.tcl \
+            --replace-fail 'foreach mdl {no yes} dualchannel {no yes}' 'foreach mdl {} dualchannel {}'
+
+          substituteInPlace tests/support/server.tcl \
+            --replace-fail 'exec /usr/bin/env' 'exec env'
+
+          sed -i '/^proc wait_load_handlers_disconnected/{n ; s/wait_for_condition 50 100/wait_for_condition 50 500/; }' \
+            tests/support/util.tcl
+
+          CLIENTS="$NIX_BUILD_CORES"
+          if (( $CLIENTS > 4)); then
+            CLIENTS=4
+          fi
+
+          # Skip some more flaky tests.
+          # Skip test requiring custom jemalloc (unit/memefficiency).
+          ./runtest \
+            --no-latency \
+            --timeout 2000 \
+            --clients "$CLIENTS" \
+            --tags -leaks \
+            --skipunit unit/memefficiency \
+            --skipunit integration/failover \
+            --skipunit integration/aof-multi-part \
+            --skipunit integration/dual-channel-replication
+
+          runHook postCheck
+        '';
       });
 
       python311 = prev.python311.override {

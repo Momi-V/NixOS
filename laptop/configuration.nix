@@ -224,6 +224,9 @@ in
     fileSystems = [ "/" ];
   };
 
+  # ASUS Tools
+  services.asusd.enable = true;
+
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";

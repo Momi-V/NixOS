@@ -199,7 +199,7 @@ in
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    curl wget
+    curl dig wget
     htop cifs-utils
     git sbctl niv nix-search-cli
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard

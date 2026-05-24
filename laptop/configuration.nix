@@ -41,8 +41,8 @@ in
 
   # KSM everything
   pongo.ksm = {
-    enable = true;            # enable the module
-    forceAllProcesses = true; # optional, as provided by the module
+    enable = false;            # enable the module
+    forceAllProcesses = false; # optional, as provided by the module
   };
 
   ## POWER

@@ -161,7 +161,7 @@ in
       bitwarden-desktop nextcloud-client protonmail-bridge-gui moonlight-qt
       chromium firefox discord vlc
       github-desktop libreoffice thunderbird
-      amdgpu_top btop fastfetch screen
+      amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight
       kdePackages.kcalc kdePackages.kompare kdePackages.marknote
       virt-manager docker-compose

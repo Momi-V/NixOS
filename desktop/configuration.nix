@@ -174,8 +174,8 @@ in
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight
       kdePackages.kcalc kdePackages.kompare kdePackages.marknote
-      virt-manager docker-compose cemu
-      lutris winetricks mangohud
+      virt-manager docker-compose
+      cemu lutris winetricks mangohud
     ];
   };
 
@@ -215,7 +215,7 @@ in
     distrobox lshw
     git sbctl niv nix-search-cli
     btrfs-progs e2fsprogs exfatprogs xfsprogs
-    wineWow64Packages.stableFull wineWow64Packages.waylandFull
+    wineWow64Packages.stable
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 

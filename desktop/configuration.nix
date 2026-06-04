@@ -139,6 +139,7 @@ in
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";
+    xfind = "find -xdev -iname";
   };
 
   # NAS Share mount

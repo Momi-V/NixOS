@@ -234,22 +234,6 @@ in
     fileSystems = [ "/" ];
   };
 
-  # Snapper config
-  services.snapper.configs = {
-    home = {
-      SUBVOLUME = "/home";
-      ALLOW_USERS = [ "momi" ];
-      TIMELINE_CREATE = true;
-      TIMELINE_CLEANUP = true;
-      TIMELINE_LIMIT_HOURLY = 37;
-      TIMELINE_LIMIT_DAILY = 9;
-      TIMELINE_LIMIT_WEEKLY = 0;
-      TIMELINE_LIMIT_MONTHLY = 0;
-      TIMELINE_LIMIT_QUARTERLY = 0;
-      TIMELINE_LIMIT_YEARLY = 0;
-    };
-  };
-
   # ASUS Tools
   services.asusd.enable = true;
 

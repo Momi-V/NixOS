@@ -172,7 +172,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      bitwarden-desktop nextcloud-client protonmail-bridge-gui
+      bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord vlc
       github-desktop libreoffice thunderbird
       pkgsRocm.blender davinci-resolve-studio

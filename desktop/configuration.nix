@@ -222,7 +222,7 @@ in
     htop cifs-utils
     distrobox lshw
     git sbctl niv nix-search-cli
-    btrfs-progs e2fsprogs exfatprogs xfsprogs
+    btrfs-progs compsize e2fsprogs exfatprogs xfsprogs
     wineWow64Packages.stable
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];

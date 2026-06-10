@@ -223,6 +223,13 @@ in
           (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
       });
 
+      embree = prev.embree.overrideAttrs (old: {
+        cmakeFlags = (old.cmakeFlags or []) ++ [
+          "-DEMBREE_ISA_SSE2=OFF"
+          "-DEMBREE_ISA_SSE42=OFF"
+        ];
+      });
+
       opencolorio = prev.opencolorio.overrideAttrs (old: {
         NIX_CFLAGS_COMPILE =
           (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";

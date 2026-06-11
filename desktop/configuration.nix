@@ -233,6 +233,20 @@ in
           (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
       });
 
+      xen = prev.xen.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [
+          (prev.writeText "xen-text-alignment.patch" ''
+            --- a/xen/arch/x86/boot/Makefile
+            +++ b/xen/arch/x86/boot/Makefile
+            @@ -44,2 +44,2 @@
+            -text_gap := 0x010200
+            -text_diff := 0x408020
+            +text_gap := 0x010240
+            +text_diff := 0x608040
+          '')
+        ];
+      });
+
       python311 = prev.python311.override {
         packageOverrides = pyFinal: pyPrev: {
           numpy_1 = pyPrev.numpy.overrideAttrs (old: {

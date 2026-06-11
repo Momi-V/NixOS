@@ -210,11 +210,6 @@ in
         ];
       });
 
-      opencolorio = prev.opencolorio.overrideAttrs (old: {
-        NIX_CFLAGS_COMPILE =
-          (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
-      });
-
       # https://lists.xenproject.org/archives/html/xen-devel/2025-01/msg00439.html
       xen = prev.xen.overrideAttrs (old: {
         patches = (old.patches or []) ++ [
@@ -229,15 +224,6 @@ in
           '')
         ];
       });
-
-      python311 = prev.python311.override {
-        packageOverrides = pyFinal: pyPrev: {
-          numpy_1 = pyPrev.numpy.overrideAttrs (old: {
-            NIX_CFLAGS_COMPILE =
-              (old.NIX_CFLAGS_COMPILE or "") + " -ffp-contract=on";
-          });
-        };
-      };
     })
   ];
 

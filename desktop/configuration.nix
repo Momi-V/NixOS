@@ -189,8 +189,8 @@ in
     # Nix Experimental
     experimental-features = "nix-command flakes";
     # Nix Limit parallel build
-    max-jobs = 1;
-    cores = 31;
+    max-jobs = 16;
+    cores = 16;
   };
 
   # Allow unfree Software and add unstable channnel

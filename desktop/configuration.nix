@@ -226,27 +226,35 @@ in
     wineWow64Packages.stable
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
 
-    # Phoronix
-    phoronix-test-suite
+    (buildFHSEnv {
+      name = "phoronix-fhs";
 
-    cmake
-    gfortran
-    tcl
-    ruby
-    rustc
-    cargo
-    libtool
+      targetPkgs = pkgs: with pkgs; [
+        # Phoronix
+        phoronix-test-suite
 
-    libaio
-    attr
-    libjpeg
+        cmake
+        gfortran
+        tcl
+        ruby
+        rustc
+        cargo
+        libtool
 
-    jdk
-    go
-    bison
+        libaio
+        attr
+        libjpeg
 
-    numactl
-    boost
+        jdk
+        go
+        bison
+
+        numactl
+        boost
+      ];
+
+      runScript = "bash";
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

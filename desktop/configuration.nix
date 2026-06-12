@@ -260,7 +260,28 @@ in
     btrfs-progs compsize e2fsprogs exfatprogs xfsprogs
     wineWow64Packages.stable
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
+
+    # Phoronix
     phoronix-test-suite
+
+    cmake
+    gfortran
+    tcl
+    ruby
+    rustc
+    cargo
+    libtool
+
+    libaio
+    attr
+    libjpeg
+
+    jdk
+    go
+    bison
+
+    numactl
+    boost
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

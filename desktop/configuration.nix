@@ -225,6 +225,7 @@ in
     btrfs-progs compsize e2fsprogs exfatprogs xfsprogs
     wineWow64Packages.stable
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
+    phoronix-test-suite
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -245,6 +245,7 @@ in
   };
 
   # Snapper config
+  services.snapper.persistentTimer = true;
   services.snapper.configs = {
     home = {
       SUBVOLUME = "/home";

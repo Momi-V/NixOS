@@ -70,7 +70,7 @@ in
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-  time.hardwareClockInLocalTime = true; # RTC local time
+  # time.hardwareClockInLocalTime = true; # RTC local time
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

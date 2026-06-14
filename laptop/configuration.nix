@@ -107,6 +107,9 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns4 = true;
+  services.system-config-printer.enable = true;
 
   # Enable sound.
   # services.pulseaudio.enable = true;

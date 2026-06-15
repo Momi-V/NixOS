@@ -157,11 +157,12 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord vlc
       github-desktop libreoffice thunderbird
+      pkgsRocm.blender davinci-resolve-studio
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight
       kdePackages.kcalc kdePackages.kompare kdePackages.marknote

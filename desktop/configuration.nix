@@ -229,7 +229,6 @@ in
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl dig wget
     htop cifs-utils
-    distrobox lshw
     git sbctl niv nix-search-cli
     btrfs-progs compsize e2fsprogs exfatprogs xfsprogs
     wineWow64Packages.stable

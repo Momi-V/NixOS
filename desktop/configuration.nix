@@ -54,6 +54,11 @@ in
     ''
   )];
 
+  # DaVinci Resolve UDEV
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
+  '';
+
   # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.
   # Pick only one of the below networking options.

@@ -47,6 +47,11 @@ in
     forceAllProcesses = false; # optional, as provided by the module
   };
 
+  # DaVinci Resolve UDEV
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
+  '';
+
   ## POWER
   services.power-profiles-daemon.enable = true;
   powerManagement = {

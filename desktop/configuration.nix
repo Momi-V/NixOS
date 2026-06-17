@@ -84,6 +84,7 @@ in
   # services.xserver.enable = true; # optional
   services.displayManager.plasma-login-manager.enable = true;
   services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
 
   # Sunshine for remote Desktop

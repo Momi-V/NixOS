@@ -13,7 +13,6 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/ksm.nix
       lanzaboote.nixosModules.lanzaboote
     ];
 
@@ -34,18 +33,10 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "ntsync" ];
   boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" "riscv64-linux" ];
-  boot.binfmt.preferStaticEmulators = true;
 
   # Set higher uLimit
   systemd.settings.Manager.DefaultLimitNOFILE = "65536:1048576";
   systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
-
-  # KSM everything
-  pongo.ksm = {
-    enable = false;            # enable the module
-    forceAllProcesses = false; # optional, as provided by the module
-  };
 
   # DaVinci Resolve UDEV
   services.udev.extraRules = ''
@@ -75,10 +66,6 @@ in
   time.timeZone = "Europe/Berlin";
   # time.hardwareClockInLocalTime = true; # RTC local time
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
   console = {
@@ -86,9 +73,6 @@ in
     # keyMap = "de";
     useXkbConfig = true; # use xkb.options in tty.
   };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
 
   # Enable HW Acceleration
   hardware.graphics = {
@@ -102,9 +86,6 @@ in
   services.displayManager.plasma-login-manager.enable = true;
   services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
-
-  # Fingerprint Reader
-  # services.fprintd.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
@@ -128,9 +109,6 @@ in
     # Uncomment the following line if you want to use JACK applications
     jack.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # General user environment
   environment.variables = {
@@ -160,14 +138,14 @@ in
     extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
-      chromium firefox discord vlc
+      chromium firefox discord spotify vlc
       github-desktop libreoffice thunderbird
       pkgsRocm.blender davinci-resolve-studio
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight
-      kdePackages.kcalc kdePackages.kompare kdePackages.marknote
+      kdePackages.kcalc kdePackages.kompare
       virt-manager docker-compose
-      cemu lutris winetricks mangohud
+      cemu winetricks mangohud
     ];
   };
 
@@ -213,14 +191,6 @@ in
     wineWow64Packages.stable
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 

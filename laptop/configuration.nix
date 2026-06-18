@@ -189,7 +189,7 @@ in
     git sbctl niv nix-search-cli
     btrfs-progs compsize e2fsprogs exfatprogs xfsprogs
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
-    wineWow64Packages.stable
+    wineWow64Packages.stable kdePackages.plasma-camera
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 

@@ -187,14 +187,13 @@ in
     curl dig wget
     htop cifs-utils
     git sbctl niv nix-search-cli
-    btrfs-progs compsize e2fsprogs exfatprogs xfsprogs
+    btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
     wineWow64Packages.stable kdePackages.plasma-camera
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 
   # List services that you want to enable:
-
   # Btrfs scrub
   services.btrfs.autoScrub = {
     enable = true;

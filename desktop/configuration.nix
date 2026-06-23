@@ -50,6 +50,12 @@ in
     SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
   '';
 
+  ## POWER
+  services.power-profiles-daemon.enable = true;
+  powerManagement = {
+    enable = true;
+  };
+
   # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -207,7 +213,7 @@ in
     htop cifs-utils
     git sbctl niv nix-search-cli
     btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
-    wineWow64Packages.stable
+    wineWow64Packages.stableFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 

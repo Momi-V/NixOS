@@ -171,7 +171,7 @@ in
       btrfs-assistant kdePackages.filelight
       kdePackages.kcalc kdePackages.kompare
       virt-manager docker-compose
-      cemu winetricks mangohud
+      cemu winetricks mangohud lmstudio
     ];
   };
 

@@ -212,7 +212,7 @@ in
     curl dig wget
     htop cifs-utils
     git sbctl niv nix-search-cli
-    btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
+    gparted btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
     wineWow64Packages.stableFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];

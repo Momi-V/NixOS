@@ -88,6 +88,21 @@ in
   programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
 
+  # XDG Portals (Screenshare, etc.)
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "kde" ];
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-termfilechooser
+      pkgs.kdePackages.xdg-desktop-portal-kde
+    ];
+  };
+
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";

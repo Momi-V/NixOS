@@ -42,8 +42,8 @@
   #services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
@@ -78,8 +78,8 @@
     # Nix Experimental
     experimental-features = "nix-command flakes";
     # Nix Limit parallel build
-    max-jobs = 1;
-    cores = 32;
+    max-jobs = 16;
+    cores = 16;
   };
 
   # Allow unfree Software and add unstable channnel
@@ -107,8 +107,8 @@
   services.qemuGuest.enable = true;
 
   # FHS compatibility
-  #services.envfs.enable = true;
-  #programs.nix-ld.enable = true;
+  services.envfs.enable = true;
+  programs.nix-ld.enable = true;
 
   # zRam zwap
   zramSwap.enable = true;

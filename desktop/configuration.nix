@@ -158,7 +158,7 @@ in
     fsType = "cifs";
     options = [
       "credentials=/home/momi/netsmb.login"
-      "mfsymlinks,echo_interval=15" "uid=1000,gid=100"
+      "uid=1000,gid=100"
       "x-systemd.automount,noauto,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
     ];
   };

@@ -129,6 +129,7 @@ in
   # General user environment
   environment.variables = {
     NIXPKGS_ALLOW_UNFREE = 1;
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
     PROTON_ENABLE_WAYLAND=1;
     PROTON_ENABLE_HDR=1;
   };
@@ -268,6 +269,8 @@ in
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  # Passworless Agent.
+  programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

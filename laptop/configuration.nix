@@ -41,6 +41,7 @@ in
   # DaVinci Resolve UDEV
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
+    ACTION=="add|change", ATTRS{product}=="R0", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
   '';
 
   ## POWER

@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
   boot.initrd.luks.devices."crypt".device = "/dev/disk/by-partlabel/CRYPT";
   boot.kernelModules = [ "kvm-amd" ];
@@ -52,10 +52,10 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   # Hardware optimized compilation
-  nix.settings.system-features = [ "gccarch-znver3" "gccarch-x86-64-v3" "gccarch-x86-64-v2" "gccarch-x86-64" ];
+  nix.settings.system-features = [ "gccarch-x86-64-v3" "gccarch-x86-64-v2" "gccarch-x86-64" ];
   # nixpkgs.localSystem = {
   #   gcc.arch = "x86-64-v3";
-  #   gcc.tune = "znver3";
+  #   gcc.tune = "generic";
   #   system = "x86_64-linux";
   # };
 

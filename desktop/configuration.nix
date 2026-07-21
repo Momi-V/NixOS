@@ -62,7 +62,7 @@ in
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.interfaces.enp7s0.wakeOnLan.enable = true; # Turn on WoL
+  networking.interfaces.enp6s0.wakeOnLan.enable = true; # Turn on WoL
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth

@@ -205,7 +205,7 @@ in
     htop cifs-utils
     git sbctl niv nix-search-cli
     gparted-full kdePackages.partitionmanager
-    btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
+    unstable.btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
     kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
     wineWow64Packages.stableFull kdePackages.plasma-camera
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large

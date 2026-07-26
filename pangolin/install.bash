@@ -1,5 +1,8 @@
 #!/bin/bash
 
+curl -o /etc/nixos/configuration.nix https://raw.githubusercontent.com/Momi-V/NixOS/refs/heads/main/pangolin/configuration.nix
+nixos-rebuild switch --upgrade-all --install-bootloader
+
 mkdir /var/pangolin
 cd /var/pangolin
 

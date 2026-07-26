@@ -14,13 +14,13 @@ EOL
 sleep 1
 
 echo "Formatting Filesystems"
-mkfs.fat -F 32 -n NIXBOOT /dev/vda2
-mkfs.btrfs /dev/vda3 -L NIXROOT
-mkswap /dev/vda4
+mkfs.fat -F 32 -n NIXBOOT /dev/vda1
+mkfs.btrfs /dev/vda2 -L NIXROOT
+mkswap /dev/vda3
 sleep 1
 
 echo "Mounting Filesystems"
-swapon /dev/vda4
+swapon /dev/vda3
 mount /dev/disk/by-label/NIXROOT /mnt
 mkdir -p /mnt/boot
 mount /dev/disk/by-label/NIXBOOT /mnt/boot

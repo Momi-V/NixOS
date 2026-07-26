@@ -32,7 +32,7 @@ in
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "ntsync" ];
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "video=DP-2:e" "drm.edid_firmware=DP-2:edid/edid.bin" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" "amdgpu.ppfeaturemask=0xffffffff" "video=DP-2:e" "drm.edid_firmware=DP-2:edid/edid.bin" ];
 
   # Set higher uLimit
   systemd.settings.Manager.DefaultLimitNOFILE = "65536:1048576";
@@ -86,6 +86,8 @@ in
     enable32Bit = true;
   };
   hardware.amdgpu.opencl.enable = true;
+  # TDP Limit
+  programs.corectrl.enable = true;
 
   # KDE Plasma Desktop
   # services.xserver.enable = true; # optional

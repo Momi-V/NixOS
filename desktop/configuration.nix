@@ -111,6 +111,14 @@ in
     ];
   };
 
+  # Enable cron service
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "@reboot root . /etc/profile; /home/momi/RAPL.sh"
+    ];
+  };
+
   # Sunshine for remote Desktop
   services.sunshine = {
     enable = true;
@@ -180,7 +188,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" "corectrl" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop spotify vlc

@@ -104,6 +104,14 @@ in
     ];
   };
 
+  # Enable cron service
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "@reboot root . /etc/profile; /home/momi/RAPL.sh"
+    ];
+  };
+
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";

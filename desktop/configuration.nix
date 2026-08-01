@@ -103,12 +103,6 @@ in
     config = {
       common.default = [ "kde" ];
     };
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-termfilechooser
-      pkgs.kdePackages.xdg-desktop-portal-kde
-    ];
   };
 
   # Enable cron service

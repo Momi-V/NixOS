@@ -155,6 +155,7 @@ in
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";
+    nixfrb = "sudo nixos-rebuild boot --upgrade-all --install-bootloader";
     xfind = "find -xdev -iname";
   };
 

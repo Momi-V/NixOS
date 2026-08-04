@@ -185,7 +185,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" "corectrl" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
+      unstable.bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop spotify vlc
       github-desktop libreoffice thunderbird
       pkgsRocm.blender davinci-resolve-studio
@@ -215,9 +215,6 @@ in
         config = config.nixpkgs.config;
       };
     };
-    permittedInsecurePackages = [
-      "electron-39.8.10"
-    ];
   };
 
   # Virtualization

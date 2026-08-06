@@ -204,6 +204,17 @@ in
     # Nix Limit parallel build
     max-jobs = 16;
     cores = 16;
+
+    substituters = [
+      "https://cache.nixos.org"
+      "https://comfyui.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "comfyui.cachix.org-1:33mf9VzoIjzVbp0zwj+fT51HG0y31ZTK3nzYZAX0rec="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
   # Allow unfree Software and add unstable channnel

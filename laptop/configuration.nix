@@ -165,7 +165,7 @@ in
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight
       kdePackages.kcalc kdePackages.kcharselect meld
-      virt-manager docker-compose
+      virt-manager docker-compose easyeffects
       cemu winetricks mangohud
     ];
   };

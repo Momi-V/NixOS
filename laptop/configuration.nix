@@ -46,9 +46,7 @@ in
 
   ## POWER
   services.power-profiles-daemon.enable = true;
-  powerManagement = {
-    enable = true;
-  };
+  powerManagement.enable = true;
 
   # Networking
   networking.hostName = "AshFlake"; # Define your hostname.
@@ -202,11 +200,11 @@ in
   };
 
   # Virtualization
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemu.swtpm.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  #virtualisation.libvirtd.enable = true;
+  #virtualisation.libvirtd.qemu.swtpm.enable = true;
+  #virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
-  virtualisation.podman.enable = true;
+  #virtualisation.podman.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).

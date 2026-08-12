@@ -185,7 +185,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "video" "render" "corectrl" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      unstable.bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
+      bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop spotify vlc
       github-desktop libreoffice thunderbird
       pkgsRocm.blender davinci-resolve-studio
@@ -243,7 +243,7 @@ in
     htop cifs-utils
     git sbctl niv nix-search-cli rocmPackages.rocminfo
     gparted-full kdePackages.partitionmanager
-    unstable.btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
+    btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
     wineWow64Packages.stableFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];

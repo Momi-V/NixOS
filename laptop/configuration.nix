@@ -162,7 +162,7 @@ in
       pkgsRocm.blender davinci-resolve-studio
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
-      kdePackages.kcalc kdePackages.kcharselect meld
+      kdePackages.kcalc kdePackages.kcharselect kdePackages.kup bup meld
       virt-manager docker-compose easyeffects
       cemu winetricks mangohud
     ];

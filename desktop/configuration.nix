@@ -53,9 +53,7 @@ in
 
   ## POWER
   services.power-profiles-daemon.enable = true;
-  powerManagement = {
-    enable = true;
-  };
+  powerManagement.enable = true;
 
   # Networking
   networking.hostName = "EmberFlake"; # Define your hostname.
@@ -166,7 +164,7 @@ in
     options = [
       "credentials=/home/momi/netsmb.login"
       "uid=1000,gid=100"
-      "x-systemd.automount,noauto,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
+      "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
     ];
   };
 

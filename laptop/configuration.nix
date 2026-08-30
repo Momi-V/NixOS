@@ -141,6 +141,17 @@ in
     xfind = "find -xdev -iname";
   };
 
+  # NAS Share mount
+  fileSystems."/mnt/net" = {
+    device = "//truenas.lan/net/";
+    fsType = "cifs";
+    options = [
+      "credentials=/home/momi/netsmb.login"
+      "uid=1000,gid=100"
+      "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
+    ];
+  };
+
   # Enable Steam and related services
   programs.steam = {
     enable = true;

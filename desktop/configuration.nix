@@ -84,6 +84,8 @@ in
     enable32Bit = true;
   };
   hardware.amdgpu.opencl.enable = true;
+  nixpkgs.config.rocmSupport = true;
+
   # TDP Limit
   programs.corectrl.enable = true;
 
@@ -190,7 +192,7 @@ in
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
       kdePackages.kcalc kdePackages.kcharselect kdePackages.kup bup meld
-      virt-manager docker-compose easyeffects
+      virt-manager docker-compose distroshelf easyeffects
       cemu winetricks mangohud lmstudio
     ];
   };
@@ -227,7 +229,7 @@ in
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl dig wget
-    htop cifs-utils
+    htop cifs-utils distrobox
     git sbctl lon nix-search-cli rocmPackages.rocminfo
     gparted-full kdePackages.partitionmanager
     btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs

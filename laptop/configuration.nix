@@ -79,6 +79,7 @@ in
     enable32Bit = true;
   };
   hardware.amdgpu.opencl.enable = true;
+  nixpkgs.config.rocmSupport = true;
 
   # KDE Plasma Desktop
   # services.xserver.enable = true; # optional

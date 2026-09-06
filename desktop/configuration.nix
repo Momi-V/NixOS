@@ -149,6 +149,13 @@ in
     PROTON_ENABLE_HDR=1;
     MANGOHUD=1;
   };
+  environment.sessionVariables = {
+    XCURSOR_PATH = [
+      "${config.system.path}/share/icons"
+      "$HOME/.icons"
+      "$HOME/.local/share/icons"
+    ];
+  };
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";
@@ -262,6 +269,10 @@ in
   # FHS compatibility
   services.envfs.enable = true;
   programs.nix-ld.enable = true;
+
+  # AppImage
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   # Nix stuff
   system.autoUpgrade = {

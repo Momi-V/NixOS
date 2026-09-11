@@ -53,6 +53,17 @@
   services.envfs.enable = true;
   programs.nix-ld.enable = true;
 
+  # DynDNS
+  services.ddclient = {
+    enable = true;
+    interval = "5min";
+    protocol = "cloudflare";
+    passwordFile = "/var/dyndns/domain.key";
+    domains = [ "staging.volzsys.de" ];
+    zone = "volzsys.de";
+    ssl = true;
+  };
+
   # Nix stuff
   system.autoUpgrade = {
     enable = true;
@@ -72,14 +83,6 @@
     dates = "weekly";
     persistent = true;
     options = "--delete-older-than 30d";
-  };
-
-  # Enable cron service
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "*/1 * * * * root . /etc/profile; /var/dyndns/dyndns.bash"
-    ];
   };
 
   # Open ports in the firewall.

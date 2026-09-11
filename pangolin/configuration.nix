@@ -53,6 +53,17 @@
   services.envfs.enable = true;
   programs.nix-ld.enable = true;
 
+  # DynDNS
+  services.ddclient = {
+    enable = true;
+    interval = "5min";
+    protocol = "cloudflare";
+    passwordFile = "/var/pangolin/domain.key";
+    domains = [ "vpn.volzsys.de" ];
+    zone = "volzsys.de";
+    ssl = true;
+  };
+
   # Nix stuff
   system.autoUpgrade = {
     enable = true;
@@ -78,7 +89,6 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/1 * * * * root . /etc/profile; /var/pangolin/dyndns.bash"
       "@reboot root . /etc/profile; /var/pangolin/update.bash"
     ];
   };

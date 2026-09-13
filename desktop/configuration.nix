@@ -147,7 +147,6 @@ in
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
     PROTON_ENABLE_WAYLAND=1;
     PROTON_ENABLE_HDR=1;
-    MANGOHUD=1;
   };
   environment.sessionVariables = {
     XCURSOR_PATH = [

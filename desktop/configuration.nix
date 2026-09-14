@@ -4,16 +4,10 @@
 
 { config, lib, pkgs, ... }:
 
-let
-    sources = import /root/lon.nix;
-    lanzaboote = import sources.lanzaboote { inherit pkgs; };
-in
-
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      lanzaboote.nixosModules.lanzaboote
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -22,12 +16,8 @@ in
   boot.initrd.systemd.enable = true;
 
   # Lanzaboote
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
-  };
+  boot.loader.limine.enable = true;
+  boot.loader.limine.secureBoot.enable = true;
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;

@@ -169,6 +169,12 @@ in
     gamescopeSession.enable = true; # Use the gamescope compositor, enables resolution upscaling and stretched aspect ratios
     extraCompatPackages = [ pkgs.proton-ge-bin ]; # Install Proton-GE
   };
+  programs.gamescope.enable = true;
+
+  fonts.packages = with pkgs; [
+    corefonts  # Times New Roman, Arial, Comic Sans, etc.
+    vista-fonts # Calibri, Cambria, Consolas, etc.
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {

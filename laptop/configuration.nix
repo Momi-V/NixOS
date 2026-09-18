@@ -24,9 +24,14 @@
   boot.kernelModules = [ "ntsync" ];
   boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
 
+  # Inotify limits
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_watches" = 262144;
+    "fs.inotify.max_user_instances" = 1024;
+  };
   # Set higher uLimit
-  systemd.settings.Manager.DefaultLimitNOFILE = "65536:1048576";
-  systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+  systemd.settings.Manager.DefaultLimitNOFILE = "65536:262144";
+  systemd.user.extraConfig = "DefaultLimitNOFILE=65536:262144";
 
   # DaVinci Resolve UDEV
   services.udev.extraRules = ''

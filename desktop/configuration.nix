@@ -111,7 +111,6 @@
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
-    settings.port = 48989;
   };
 
   # Moonshine for remote Streaming

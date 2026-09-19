@@ -110,7 +110,7 @@
     enable = true;
     autoStart = true;
     capSysAdmin = true;
-    openFirewall = true;
+    openFirewall = false; # Different port used in local config file, manual for now
   };
 
   # Moonshine for remote Streaming
@@ -316,8 +316,8 @@
   programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 48984 48989 49010 ];
+  networking.firewall.allowedUDPPorts = [ 48998 48999 49000 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

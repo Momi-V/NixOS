@@ -106,12 +106,13 @@
   };
 
   # Sunshine for extra Display
-  #services.sunshine = {
-  #  enable = true;
-  #  autoStart = true;
-  #  capSysAdmin = true;
-  #  openFirewall = true;
-  #};
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+    settings.port = 48989;
+  };
 
   # Moonshine for remote Streaming
   services.moonshine = {
@@ -120,6 +121,7 @@
     uid = 1000;
     openFirewall = true;
     settings = {
+      name = "EmberFlake (Moonshine)";
       application = [
         {
           title = "Steam";

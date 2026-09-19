@@ -105,12 +105,31 @@
     ];
   };
 
-  # Sunshine for remote Desktop
-  services.sunshine = {
+  # Sunshine for extra Display
+  #services.sunshine = {
+  #  enable = true;
+  #  autoStart = true;
+  #  capSysAdmin = true;
+  #  openFirewall = true;
+  #};
+
+  # Moonshine for remote Streaming
+  services.moonshine = {
     enable = true;
-    autoStart = true;
-    capSysAdmin = true;
+    user = "momi";
+    uid = 1000;
     openFirewall = true;
+    settings = {
+      application = [
+        {
+          title = "Steam";
+          command = [
+            "/run/current-system/sw/bin/steam"
+            "steam://open/bigpicture"
+          ];
+        }
+      ];
+    };
   };
 
   # Configure keymap in X11

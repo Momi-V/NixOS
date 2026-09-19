@@ -123,6 +123,7 @@
       application = [
         {
           title = "Steam";
+          boxart = "steam.png";
           command = [
             "/run/current-system/sw/bin/steam"
             "steam://open/bigpicture"
@@ -206,7 +207,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "video" "render" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "input" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop spotify vlc

@@ -268,6 +268,7 @@
     persistent = true;
     allowReboot = false;
     upgrade = false;
+    operation = "boot";
     flake = "path:/etc/nixos";
   };
 

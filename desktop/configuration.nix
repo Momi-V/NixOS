@@ -208,7 +208,7 @@
   users.users.momi = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "libvirtd" "input" "video" "render" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "moonshine" "input" "uinput" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop spotify vlc

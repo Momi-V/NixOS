@@ -117,7 +117,6 @@
   services.moonshine = {
     enable = true;
     user = "momi";
-    uid = 1000;
     openFirewall = true;
     settings = {
       name = "EmberFlake (Moonshine)";
@@ -208,6 +207,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momi = {
     isNormalUser = true;
+    uid = 1000;
     extraGroups = [ "wheel" "libvirtd" "input" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote

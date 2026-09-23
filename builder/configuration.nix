@@ -95,15 +95,7 @@
   };
 
   # Allow unfree Software and add unstable channnel
-  # nixpkgs.config.allowUnfree = true;
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -111,7 +103,7 @@
     vim nano # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget curl
     htop cifs-utils
-    git nix-search-cli niv
+    git nix-search-cli
   ];
 
   # List services that you want to enable:
@@ -132,6 +124,9 @@
     dates = "weekly";
     persistent = true;
     allowReboot = false;
+    upgrade = false;
+    operation = "boot";
+    flake = "path:/etc/nixos";
   };
 
   nix.optimise = {

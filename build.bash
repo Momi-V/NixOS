@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo nixos-rebuild build --flake ./desktop/
+sudo nixos-rebuild build --flake ./desktop/#EmberFlake

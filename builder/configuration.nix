@@ -42,8 +42,8 @@
   #services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  #services.displayManager.sddm.enable = true;
-  #services.desktopManager.plasma6.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
@@ -56,7 +56,18 @@
   environment.shellAliases = {
     nixconf = "sudo nano /etc/nixos/configuration.nix";
     nixrb = "sudo nixos-rebuild switch";
+    nixfrb = "sudo nixos-rebuild boot --upgrade-all --install-bootloader";
     xfind = "find -xdev -iname";
+  };
+
+  # NAS Share mount
+  fileSystems."/home/momi/ROM" = {
+    device = "//10.11.13.13/ROM/";
+    fsType = "cifs";
+    options = [
+      "credentials=/home/momi/netsmb.login"
+      "uid=1000,gid=100"
+    ];
   };
 
   # Install firefox.
@@ -70,6 +81,7 @@
     packages = with pkgs; [
       kdePackages.kate github-desktop
       btop tmux
+      qbittorrent
     ];
   };
 
@@ -128,19 +140,19 @@
     persistent = true;
   };
 
-  #nix.gc = {
-  #  automatic = true;
-  #  dates = "weekly";
-  #  persistent = true;
-  #  options = "--delete-older-than 30d";
-  #};
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    persistent = true;
+    options = "--delete-older-than 30d";
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 43549 ];
+  networking.firewall.allowedUDPPorts = [ 43549 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

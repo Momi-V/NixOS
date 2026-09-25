@@ -15,7 +15,7 @@
 
   fileSystems."/" =
     { device = "/dev/vda2";
-      fsType = "xfs";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =

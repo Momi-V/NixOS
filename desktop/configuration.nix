@@ -210,7 +210,7 @@
     extraGroups = [ "wheel" "libvirtd" "moonshine" "input" "uinput" "video" "render" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
-      chromium firefox discord signal-desktop spotify vlc
+      chromium firefox discord signal-desktop jellyfin-desktop spotify vlc
       github-desktop libreoffice thunderbird
       pkgsRocm.blender davinci-resolve-studio
       amdgpu_top btop fastfetch screen mission-center

@@ -91,7 +91,6 @@
   # XDG Portals (Screenshare, etc.)
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
     config = {
       common.default = [ "kde" ];
     };
@@ -218,7 +217,7 @@
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
       kdePackages.kcalc kdePackages.kcharselect kdePackages.kup bup meld
       virt-manager docker-compose distroshelf easyeffects
-      cemu winetricks mangohud lmstudio
+      cemu winetricks mangohud lmstudio nodejs
     ];
   };
 

@@ -15,19 +15,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/cee33469-e637-409d-bf01-9f1f7ea1cdb0";
+    { device = "/dev/system/root";
       fsType = "btrfs";
       options = [ "subvol=root" "compress-force=zstd" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/cee33469-e637-409d-bf01-9f1f7ea1cdb0";
+    { device = "/dev/system/root";
       fsType = "btrfs";
       options = [ "subvol=home" "compress-force=zstd" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/cee33469-e637-409d-bf01-9f1f7ea1cdb0";
+    { device = "/dev/system/root";
       fsType = "btrfs";
       options = [ "subvol=nix" "compress-force=zstd" ];
     };

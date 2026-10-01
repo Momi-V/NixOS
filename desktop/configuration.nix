@@ -217,7 +217,7 @@
     packages = with pkgs; [
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop jellyfin-desktop spotify vlc
-      github-desktop libreoffice thunderbird
+      github-desktop libreoffice thunderbird onlyoffice-desktopeditors
       pkgsRocm.blender davinci-resolve-studio
       amdgpu_top btop fastfetch screen mission-center
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault

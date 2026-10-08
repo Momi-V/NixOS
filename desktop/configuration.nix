@@ -2,12 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      "${unstable}/nixos/modules/services/networking/moonshine.nix"
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -115,8 +116,9 @@
   # Moonshine for remote Streaming
   services.moonshine = {
     enable = true;
+    package = pkgs.unstable.moonshine;
     user = "momi";
-    openFirewall = true;
+    firewallInterfaces = ["enp6s0"];
     settings = {
       name = "EmberFlake (Moonshine)";
       application = [

@@ -138,12 +138,6 @@
   services.xserver.xkb.layout = "de";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-  # YDO-Tool
-  programs.ydotool = {
-    enable = true;
-    group = "input";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.avahi.enable = true;
@@ -252,7 +246,7 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    curl dig wget wl-clipboard
+    curl dig wget
     htop cifs-utils distrobox
     git sbctl nix-search-cli rocmPackages.rocminfo
     gparted-full kdePackages.partitionmanager

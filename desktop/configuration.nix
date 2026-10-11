@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, unstable, ... }:
+{ config, lib, pkgs, unstable, optiscaler-client, ... }:
 
 {
   imports =
@@ -220,6 +220,7 @@
       kdePackages.kcalc kdePackages.kcharselect kdePackages.kup bup meld
       virt-manager docker-compose distroshelf easyeffects
       cemu winetricks mangohud lmstudio nodejs
+      optiscaler-client
     ];
   };
 

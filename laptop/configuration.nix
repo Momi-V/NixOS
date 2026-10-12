@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable, optiscaler-client, ... }:
 
 {
   imports =
@@ -187,6 +187,7 @@
       kdePackages.kcalc kdePackages.kcharselect kdePackages.kup bup meld
       virt-manager docker-compose easyeffects
       cemu winetricks mangohud
+      optiscaler-client
     ];
   };
 
@@ -218,8 +219,8 @@
     git sbctl nix-search-cli rocmPackages.rocminfo
     gparted-full kdePackages.partitionmanager
     btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs
-    kdePackages.plasma-keyboard kdePackages.qtvirtualkeyboard
-    wineWow64Packages.stableFull kdePackages.plasma-camera
+    kdePackages.plasma-keyboard kdePackages.plasma-camera kdePackages.qtvirtualkeyboard
+    wineWow64Packages.stableFull
     hunspell hunspellDicts.de_DE hunspellDicts.en_US-large
   ];
 

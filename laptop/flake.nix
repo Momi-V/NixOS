@@ -4,9 +4,10 @@
   inputs = {
     nixpkgs.url  = "github:NixOS/nixpkgs/nixos-26.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    optiscaler-client.url = "github:Optiscaler-Client/Optiscaler-Client";
   };
 
-  outputs = { self, nixpkgs, unstable }:
+  outputs = { self, nixpkgs, unstable, optiscaler-client }:
     let
       system = "x86_64-linux";
 
@@ -26,7 +27,10 @@
         ];
         # Expose the `unstable` flake input inside configuration.nix,
         # so import of unstable NixOS modules by path works.
-        specialArgs = { unstable = unstable; };
+        specialArgs = {
+          unstable = unstable;
+          optiscaler-client = optiscaler-client.packages.${system}.default;
+        };
       };
     };
 }

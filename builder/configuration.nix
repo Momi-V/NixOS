@@ -60,16 +60,6 @@
     xfind = "find -xdev -iname";
   };
 
-  # NAS Share mount
-  fileSystems."/home/momi/ROM" = {
-    device = "//10.11.13.13/ROM/";
-    fsType = "cifs";
-    options = [
-      "credentials=/home/momi/netsmb.login"
-      "uid=1000,gid=100"
-    ];
-  };
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -81,7 +71,6 @@
     packages = with pkgs; [
       kdePackages.kate github-desktop
       btop tmux
-      qbittorrent
     ];
   };
 
@@ -146,8 +135,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 43549 ];
-  networking.firewall.allowedUDPPorts = [ 43549 ];
+  # networking.firewall.allowedTCPPorts = [ ];
+  # networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

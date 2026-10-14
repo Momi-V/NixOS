@@ -36,6 +36,23 @@
     keyMap = "de";
   };
 
+  # General user environment
+  environment.variables = {
+    NIXPKGS_ALLOW_UNFREE = 1;
+  };
+  environment.shellAliases = {
+    nixconf = "sudo nano /etc/nixos/configuration.nix";
+    nixrb = "sudo nixos-rebuild switch";
+    nixfrb = "sudo nixos-rebuild boot --upgrade-all --install-bootloader";
+    xfind = "find -xdev -iname";
+  };
+
+  # Allow Flakes
+  nix.settings.experimental-features = "nix-command flakes";
+
+  # Allow unfree Software and add unstable channnel
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -70,6 +87,9 @@
     dates = "weekly";
     persistent = true;
     allowReboot = true;
+    upgrade = false;
+    operation = "boot";
+    flake = "path:/etc/nixos";
   };
 
   nix.optimise = {
@@ -102,7 +122,7 @@
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
+  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

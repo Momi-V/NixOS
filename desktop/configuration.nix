@@ -136,9 +136,12 @@
 
   services.ollama = {
     enable = true;
-    package = pkgs.ollama-rocm;
+    package = pkgs.unstable.ollama-rocm;
+    host = "[::]";
+    openFirewall = true;
     models = "/mnt/ollama/";
-    loadModels = [ "qwen3.8:latest" "nemotron-3.5-bolt:latest" ];
+    environmentVariables = { OLLAMA_CONTEXT_LENGTH = "262144"; };
+    loadModels = [ "qwen3.8" "muse-glimmer" "nemotron-3.5-bolt" ];
   };
   services.nextjs-ollama-llm-ui.enable = true;
 

@@ -134,6 +134,14 @@
     };
   };
 
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-rocm;
+    models = "/mnt/ollama/";
+    loadModels = [ "qwen3.8:latest" "nemotron-3.5-bolt:latest" ];
+  };
+  services.nextjs-ollama-llm-ui.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -185,6 +193,15 @@
     options = [
       "credentials=/home/momi/netsmb.login"
       "uid=1000,gid=100"
+      "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
+    ];
+  };
+  fileSystems."/mnt/ollama" = {
+    device = "//truenas.lan/net/Desktop/ollama";
+    fsType = "cifs";
+    options = [
+      "credentials=/home/momi/netsmb.login"
+      "noperm"
       "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
     ];
   };

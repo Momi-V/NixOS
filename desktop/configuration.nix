@@ -140,10 +140,7 @@
     host = "[::]";
     openFirewall = true;
     models = "/mnt/ollama/";
-    environmentVariables = { OLLAMA_CONTEXT_LENGTH = "262144"; };
-    loadModels = [ "qwen3.8" "muse-glimmer" "nemotron-3.5-bolt" ];
   };
-  services.nextjs-ollama-llm-ui.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
@@ -200,7 +197,7 @@
     ];
   };
   fileSystems."/mnt/ollama" = {
-    device = "//truenas.lan/net/Desktop/ollama";
+    device = "//truenas.lan/net/Desktop/ollama/models";
     fsType = "cifs";
     options = [
       "credentials=/home/momi/netsmb.login"

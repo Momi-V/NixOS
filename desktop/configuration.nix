@@ -251,6 +251,18 @@
     cores = 16;
   };
 
+  # Overlays
+  nixpkgs.overlays = [
+    (final: prev: {
+      # https://github.com/NixOS/nix/issues/16069
+      nix-bash-completions = prev.nix-bash-completions.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [
+          ./modules/0002-fix-nix-store-gc-print-roots-completion.patch
+        ];
+      });
+    })
+  ];
+
   # Allow unfree Software
   nixpkgs.config.allowUnfree = true;
 

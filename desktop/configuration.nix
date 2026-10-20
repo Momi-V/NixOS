@@ -237,7 +237,7 @@
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
       kdePackages.kcalc kdePackages.kcharselect kdePackages.kup bup meld
       virt-manager docker-compose distroshelf easyeffects
-      cemu winetricks mangohud lmstudio nodejs
+      cemu winetricks mangohud
       optiscaler-client
     ];
   };

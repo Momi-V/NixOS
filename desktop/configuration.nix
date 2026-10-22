@@ -138,7 +138,7 @@
     enable = true;
     package = pkgs.unstable.ollama-rocm;
     host = "[::]";
-    environmentVariables = { OLLAMA_KV_CACHE_TYPE = "q8_0"; };
+    environmentVariables = { LLAMA_ARG_KV_OFFLOAD = "disabled"; };
     openFirewall = true;
     models = "/mnt/ollama/";
   };

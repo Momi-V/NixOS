@@ -2,13 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, os-unstable, optiscaler-client, ... }:
+{ config, lib, pkgs, optiscaler-client, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      "${os-unstable}/nixos/modules/services/networking/moonshine.nix"
     ];
 
   # Use the systemd-boot EFI boot loader.

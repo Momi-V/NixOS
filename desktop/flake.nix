@@ -24,11 +24,11 @@
         modules = [
           ./configuration.nix
           unstable-module
+          "${unstable}/nixos/modules/services/networking/moonshine.nix"
         ];
         # Expose the `unstable` flake input inside configuration.nix,
         # so import of unstable NixOS modules by path works.
         specialArgs = {
-          os-unstable = unstable;
           optiscaler-client = optiscaler-client.packages.${system}.default;
         };
       };

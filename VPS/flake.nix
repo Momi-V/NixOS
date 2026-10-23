@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration for VPS";
+  description = "NixOS configuration for staging";
 
   inputs = {
     nixpkgs.url  = "github:NixOS/nixpkgs/nixos-26.05";
@@ -18,7 +18,7 @@
       };
     in
     {
-      nixosConfigurations.VPS = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.staging = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix

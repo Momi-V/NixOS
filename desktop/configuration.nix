@@ -133,15 +133,6 @@
     };
   };
 
-  services.ollama = {
-    enable = true;
-    package = pkgs.unstable.ollama-rocm;
-    host = "[::]";
-    environmentVariables = { LLAMA_ARG_KV_OFFLOAD = "disabled"; };
-    openFirewall = true;
-    models = "/mnt/ollama/";
-  };
-
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -193,15 +184,6 @@
     options = [
       "credentials=/home/momi/netsmb.login"
       "uid=1000,gid=100"
-      "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
-    ];
-  };
-  fileSystems."/mnt/ollama" = {
-    device = "//truenas.lan/net/Desktop/ollama/models";
-    fsType = "cifs";
-    options = [
-      "credentials=/home/momi/netsmb.login"
-      "noperm"
       "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
     ];
   };

@@ -210,6 +210,15 @@
         ];
       });
     })
+    (final: prev: {
+      # Prefer kernel ntfs driver over ntfs-3g.
+      ntfs3g = prev.ntfs3g.overrideAttrs (old: {
+        postInstall = builtins.replaceStrings
+          [ "ln -sv mount.ntfs-3g $out/sbin/mount.ntfs" ]
+          [ "" ]
+          (old.postInstall or "");
+      });
+    })
   ];
 
   # Allow unfree Software

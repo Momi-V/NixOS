@@ -38,6 +38,11 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/shared" =
+    { device = "/dev/disk/by-partlabel/SHARED";
+      fsType = "ntfs";
+    };
+
   swapDevices =
     [ { device = "/dev/system/swap"; }
     ];

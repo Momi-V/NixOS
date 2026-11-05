@@ -1,3 +1,5 @@
 desktop/flake.lock
 laptop/flake.lock
 builder/flake.lock
+pangolin/flake.lock
+VPS/flake.lock

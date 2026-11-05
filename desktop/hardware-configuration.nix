@@ -43,6 +43,11 @@
       fsType = "ntfs";
     };
 
+  fileSystems."//home/momi/Maya-data" =
+    { device = "/dev/disk/by-partlabel/LLM";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [ { device = "/dev/system/swap"; }
     ];

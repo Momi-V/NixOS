@@ -26,8 +26,6 @@
           unstable-override
           "${unstable}/nixos/modules/services/networking/moonshine.nix"
         ];
-        # Expose the `unstable` flake input inside configuration.nix,
-        # so import of unstable NixOS modules by path works.
         specialArgs = {
           optiscaler-client = optiscaler-client.packages.${system}.default;
         };

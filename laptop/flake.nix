@@ -25,8 +25,6 @@
           ./configuration.nix
           unstable-override
         ];
-        # Expose the `unstable` flake input inside configuration.nix,
-        # so import of unstable NixOS modules by path works.
         specialArgs = {
           optiscaler-client = optiscaler-client.packages.${system}.default;
         };

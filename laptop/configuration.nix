@@ -20,7 +20,7 @@
   boot.loader.limine.secureBoot.enable = true;
 
   # Use latest Kernel and zSwap
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.kernelModules = [ "ntsync" ];
   boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=50" "zswap.compressor=zstd" "zswap.zpool=zsmalloc" ];
 
@@ -164,7 +164,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     gamescopeSession.enable = true; # Use the gamescope compositor, enables resolution upscaling and stretched aspect ratios
-    extraCompatPackages = [ pkgs.proton-ge-bin ]; # Install Proton-GE
+    extraCompatPackages = [ pkgs.proton-ge-bin pkgs.proton-cachyos ]; # Install Proton-GE
   };
   programs.gamescope.enable = true;
 

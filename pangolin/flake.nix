@@ -11,7 +11,7 @@
       system = "x86_64-linux";
 
       # Keep old channel-era API: `pkgs.unstable.<pkg>`
-      unstable-module = {
+      unstable-override = {
         nixpkgs.config.packageOverrides = pkgs: {
           unstable = unstable.legacyPackages.${system};
         };
@@ -22,7 +22,7 @@
         inherit system;
         modules = [
           ./configuration.nix
-          unstable-module
+          unstable-override
         ];
       };
     };

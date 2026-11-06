@@ -12,7 +12,7 @@
       system = "x86_64-linux";
 
       # Keep old channel-era API: `pkgs.unstable.<pkg>`
-      unstable-module = {
+      unstable-override = {
         nixpkgs.config.packageOverrides = pkgs: {
           unstable = unstable.legacyPackages.${system};
         };
@@ -23,7 +23,7 @@
         inherit system;
         modules = [
           ./configuration.nix
-          unstable-module
+          unstable-override
           "${unstable}/nixos/modules/services/networking/moonshine.nix"
         ];
         # Expose the `unstable` flake input inside configuration.nix,

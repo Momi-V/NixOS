@@ -187,7 +187,7 @@
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
       kdePackages.kcalc kdePackages.kcharselect kdePackages.skanpage meld
       virt-manager docker-compose easyeffects
-      cemu winetricks mangohud
+      cemu winetricks mangohud openssl
       optiscaler-client
     ];
   };

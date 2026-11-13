@@ -43,7 +43,7 @@
       fsType = "ntfs";
     };
 
-  fileSystems."//home/momi/Maya-data" =
+  fileSystems."//home/momi/local-ext" =
     { device = "/dev/disk/by-partlabel/LLM";
       fsType = "ext4";
     };

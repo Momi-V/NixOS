@@ -215,7 +215,7 @@
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop jellyfin-desktop spotify vlc
       github-desktop libreoffice thunderbird onlyoffice-desktopeditors
-      pkgsRocm.blender davinci-resolve-studio moonlight-qt
+      blender davinci-resolve-studio moonlight-qt
       amdgpu_top btop fastfetch screen mission-center krename
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
       kdePackages.kcalc kdePackages.kcharselect kdePackages.skanpage meld

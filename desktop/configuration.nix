@@ -197,7 +197,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     gamescopeSession.enable = true; # Use the gamescope compositor, enables resolution upscaling and stretched aspect ratios
-    extraCompatPackages = [ pkgs.proton-ge-bin pkgs.proton-cachyos ]; # Install Proton-GE
+    extraCompatPackages = [ pkgs.proton-ge-bin pkgs.proton-cachyos-bin_edge ]; # Install Proton-GE
   };
   programs.gamescope.enable = true;
 
@@ -215,7 +215,7 @@
       bitwarden-desktop nextcloud-client protonmail-bridge-gui rnote
       chromium firefox discord signal-desktop jellyfin-desktop spotify vlc
       github-desktop libreoffice thunderbird onlyoffice-desktopeditors
-      blender davinci-resolve-studio moonlight-qt
+      blender davinci-resolve-studio moonlight-qt unstable.protonup-qt
       amdgpu_top btop fastfetch screen mission-center krename
       btrfs-assistant kdePackages.filelight kdePackages.plasma-vault
       kdePackages.kcalc kdePackages.kcharselect kdePackages.skanpage meld

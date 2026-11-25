@@ -43,9 +43,9 @@
       fsType = "ntfs";
     };
 
-  fileSystems."//home/momi/local-ext" =
-    { device = "/dev/disk/by-partlabel/LLM";
-      fsType = "ext4";
+  fileSystems."/mnt/shared2" =
+    { device = "/dev/disk/by-partlabel/SHARED2";
+      fsType = "ntfs";
     };
 
   swapDevices =

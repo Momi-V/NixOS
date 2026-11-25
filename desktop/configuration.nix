@@ -244,13 +244,8 @@
           (old.postInstall or "");
       });
     })
-  ];
 
-  # Allow unfree Software
-  nixpkgs.config.allowUnfree = true;
-
-  # x64_v3 Fixes
-  nixpkgs.overlays = [
+    # x64_v3 Fixes
     (final: prev: {
       # https://github.com/assimp/assimp/issues/6342
       assimp = prev.assimp.overrideAttrs (old: {
@@ -283,6 +278,9 @@
       });
     })
   ];
+
+  # Allow unfree Software
+  nixpkgs.config.allowUnfree = true;
 
   # Virtualization
   virtualisation.libvirtd.enable = true;

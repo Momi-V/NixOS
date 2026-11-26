@@ -153,6 +153,7 @@
     options = [
       "credentials=/home/momi/netsmb.login"
       "uid=1000,gid=100"
+      "posix"
       "x-systemd.automount,_netdev,nofail,x-systemd.idle-timeout=60,x-systemd.mount-timeout=15"
     ];
   };

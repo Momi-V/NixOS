@@ -41,9 +41,16 @@
 
   # DaVinci Resolve UDEV
   services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
-    ACTION=="add|change", ATTRS{product}=="R0", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
+    ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
+    ACTION=="add|change", SUBSYSTEM=="scsi_disk", ATTRS{product}=="R0", ATTR{provisioning_mode}="unmap"
+    ACTION=="add|change", SUBSYSTEM=="powercap", KERNEL=="intel-rapl*", RUN+="${pkgs.coreutils}/bin/chmod a+r /sys/%p/energy_uj"
   '';
+
+  # Caps for Mission-Center nethog use
+  security.wrappers.nethogs = {
+    source = "${pkgs.nethogs}/bin/nethogs";
+    capabilities = "cap_net_admin,cap_net_raw,cap_dac_read_search,cap_sys_ptrace+pe";
+  };
 
   ## POWER
   services.power-profiles-daemon.enable = true;
@@ -93,14 +100,6 @@
     config = {
       common.default = [ "kde" ];
     };
-  };
-
-  # Enable cron service
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "@reboot root . /etc/profile; /home/momi/RAPL.sh"
-    ];
   };
 
   # Sunshine for extra Display
@@ -261,7 +260,7 @@
   environment.systemPackages = with pkgs; [
     nano vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl dig wget
-    htop cifs-utils distrobox
+    htop cifs-utils distrobox lm_sensors nethogs
     git sbctl nix-search-cli rocmPackages.rocminfo
     gparted-full kdePackages.partitionmanager
     btrfs-progs compsize e2fsprogs exfatprogs ntfsprogs-plus xfsprogs

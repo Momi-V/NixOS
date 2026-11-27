@@ -58,6 +58,7 @@
     nixrb = "sudo nixos-rebuild switch";
     nixfrb = "sudo nixos-rebuild boot --upgrade-all --install-bootloader";
     xfind = "find -xdev -iname";
+    uptime = "${pkgs.procps}/bin/uptime";
   };
 
   # Install firefox.

@@ -2,7 +2,7 @@
   description = "NixOS configuration for builder";
 
   inputs = {
-    nixpkgs.url  = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
+    nixpkgs.url  = "https://channels.nixos.org/nixos-26.11/nixexprs.tar.zst";
     unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
   };
 

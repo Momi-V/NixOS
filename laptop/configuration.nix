@@ -13,7 +13,6 @@
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.enable = true;
 
   # Lanzaboote
   boot.loader.limine.enable = true;
@@ -31,7 +30,7 @@
   };
   # Set higher uLimit
   systemd.settings.Manager.DefaultLimitNOFILE = "65536:262144";
-  systemd.user.extraConfig = "DefaultLimitNOFILE=65536:262144";
+  systemd.user.settings.Manager.DefaultLimitNOFILE = "65536:262144";
 
   # DaVinci Resolve UDEV
   services.udev.extraRules = ''

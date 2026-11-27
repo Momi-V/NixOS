@@ -18,8 +18,8 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Set higher uLimit
-  systemd.settings.Manager.DefaultLimitNOFILE = "65536:1048576";
-  systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+  systemd.settings.Manager.DefaultLimitNOFILE = "65536:262144";
+  systemd.user.settings.Manager.DefaultLimitNOFILE = "65536:262144";
 
   networking.hostName = "builder"; # Define your hostname.
 

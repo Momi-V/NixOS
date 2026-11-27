@@ -13,7 +13,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.enable = true;
 
   # Use latest Kernel and zSwap
   boot.kernelPackages = pkgs.linuxPackages_latest;

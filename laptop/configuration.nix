@@ -42,6 +42,8 @@
   # Caps for Mission-Center nethog use
   security.wrappers.nethogs = {
     source = "${pkgs.nethogs}/bin/nethogs";
+    owner = "root";
+    group = "root";
     capabilities = "cap_net_admin,cap_net_raw,cap_dac_read_search,cap_sys_ptrace+pe";
   };
 

@@ -25,7 +25,6 @@
         modules = [
           ./configuration.nix
           unstable-override
-          "${unstable}/nixos/modules/services/networking/moonshine.nix"
           chaotic.nixosModules.nyx-cache
           chaotic.nixosModules.nyx-overlay
           chaotic.nixosModules.nyx-registry

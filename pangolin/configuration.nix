@@ -48,7 +48,7 @@
   };
 
   # Allow Flakes
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.experimental-features = [ "nix-command" "flakes"];
 
   # Allow unfree Software and add unstable channnel
   nixpkgs.config.allowUnfree = true;

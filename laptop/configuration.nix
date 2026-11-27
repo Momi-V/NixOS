@@ -195,7 +195,7 @@
   # Nix internal Options
   nix.settings = {
     # Nix Experimental
-    experimental-features = "nix-command flakes";
+    experimental-features = [ "nix-command" "flakes" ];
     # Nix Limit parallel build
     max-jobs = 16;
     cores = 16;
